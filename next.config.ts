@@ -5,12 +5,18 @@ const repo   = "grave-care";
 
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: isProd ? `/${repo}` : "",
-  assetPrefix: isProd ? `/${repo}/` : "",
-  trailingSlash: true,
+
+  // in prod, all pages + assets live under /grave-care
+  basePath:   isProd ? `/${repo}`   : "",
+  assetPrefix:isProd ? `/${repo}/`  : "",
+
+  // for <Image> to work in a static-export
   images: {
-    unoptimized: true,    // ⚠️ required for static export
+    unoptimized: true,
   },
+
+  // optional, but keeps your URLs ending in “/”
+  trailingSlash: true,
 };
 
 export default nextConfig;
