@@ -1,7 +1,5 @@
 import Image from "next/image";
-import { usePathname } from 'next/navigation'
-
-const basePath = process.env.NODE_ENV === 'production' ? '/grave-care' : '';
+import { basePath } from "./utils/basePath";
 
 export default function Home() {
   return (
