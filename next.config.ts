@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
   assetPrefix: isProd ? `/${repo}/` : "",
   // optional: makes URLs end in slash (good for Github Pages)
   trailingSlash: true,
+  images: {
+    unoptimized: true,    // ⚠️ required for static export
+  },
 };
 
 export default nextConfig;
