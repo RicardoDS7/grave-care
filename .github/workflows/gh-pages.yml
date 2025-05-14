@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        # make sure this is NOT passed a custom token that disables write access
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -19,12 +20,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Export static site
-        run: npm run deploy
+      - name: Build static site
+        run: npm run deploy    # now just runs `next build` → creates out/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
-          # by default deploys to branch gh-pages
+          publish_dir: ./out   # this is where Next.js v15 puts static assets
