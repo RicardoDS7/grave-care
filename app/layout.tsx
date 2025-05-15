@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "./components/Header";
+import ClientHeader from "./components/ClientHeader";
 
 import { Inter } from 'next/font/google';
 import { Playfair_Display } from 'next/font/google';
@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans bg-brand-background text-brand-foreground">
-        <Header />
+        <ClientHeader />
         {children}
       </body>
     </html>

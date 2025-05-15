@@ -45,7 +45,7 @@ const FaqSection: React.FC = () => {
             <div key={index} className="border-b pb-4">
               <button
                 onClick={() => toggle(index)}
-                className="w-full flex justify-between items-center text-left font-medium text-gray-800 text-lg"
+                className="w-full flex justify-between cursor-pointer items-center text-left font-medium text-gray-800 text-lg"
               >
                 {faq.question}
                 <span className="text-gray-500">{openIndex === index ? "−" : "+"}</span>

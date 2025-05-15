@@ -3,8 +3,8 @@
 :root {
   --background: #F8FAFC;     /* light background */
   --foreground: #1E293B;     /* dark text */
-  --primary: #4CAF50;        /* green – brand primary */
-  --accent: #A78BFA;         /* lavender – soft accent */
+  --primary: #A78BFA;        /* green – brand primary */
+  --secondary: #815AF7;         /* lavender – soft accent */
   --border: #CBD5E1;         /* cool gray – borders and lines */
   --font-display: 'Playfair Display', serif;
   --font-body: 'Inter', sans-serif;
@@ -15,6 +15,7 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-accent: var(--accent);
+  --color-accent-hover: var(--accent);
   --color-border: var(--border);
 }
 

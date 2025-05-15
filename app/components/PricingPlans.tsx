@@ -6,29 +6,59 @@ import FadeInOutSection from "./FadeInOutSection";
 
 type Plan = {
   name: string;
-  priceMonthly: number;
+  priceMonthly?: number;
   priceOnceOff: number;
-  features: string[];
+  featuresMonthly: string[];
+  featuresOnceOff: string[];
 };
 
 const plans: Plan[] = [
   {
     name: "Basic",
     priceMonthly: 199,
-    priceOnceOff: 299,
-    features: ["Monthly clean", "Photo proof with each visit"],
+    priceOnceOff: 249,
+    featuresMonthly: [
+      "Monthly cleaning",
+      "Weed removal",
+      "Photo proof after visit",
+    ],
+    featuresOnceOff: [
+      "One-time cleaning",
+      "Weed removal",
+      "Photo proof after service",
+    ],
   },
   {
     name: "Standard",
-    priceMonthly: 349,
-    priceOnceOff: 499,
-    features: ["Bi-weekly clean", "Fresh flower placement", "Photo proof"],
+    priceMonthly: 449,
+    priceOnceOff: 649,
+    featuresMonthly: [
+      "Bi-weekly cleaning",
+      "Fresh flower placement",
+      "Photo proof",
+    ],
+    featuresOnceOff: [
+      "Full cleaning",
+      "Seasonal flower placement",
+      "Before & after photo proof",
+    ],
   },
   {
     name: "Premium",
-    priceMonthly: 499,
-    priceOnceOff: 699,
-    features: ["Weekly clean", "Seasonal decorations", "Flowers", "Photo & report"],
+    priceMonthly: 749,
+    priceOnceOff: 899,
+    featuresMonthly: [
+      "Weekly cleaning",
+      "Premium flowers",
+      "Headstone lettering touch-up",
+      "Before & after photo set",
+    ],
+    featuresOnceOff: [
+      "Deep cleaning",
+      "Lettering restoration",
+      "Premium flower tribute",
+      "Full before & after documentation",
+    ],
   },
 ];
 
@@ -37,69 +67,80 @@ const PricingPlans: React.FC = () => {
 
   return (
     <FadeInOutSection>
-    <section id="pricing" className="bg-white py-20 px-6">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
-          Choose Your Care Plan
-        </h2>
-        <p className="text-lg text-gray-600 mb-8">
-          Transparent pricing with flexible once-off or recurring options.
-        </p>
+      <section id="pricing" className="bg-white py-20 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+            Choose Your Care Plan
+          </h2>
+          <p className="text-lg text-gray-600 mb-8">
+            Transparent pricing with flexible once-off or recurring options.
+          </p>
 
-        {/* Toggle Switch */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex items-center bg-gray-100 rounded-full p-1">
-            <button
-              type="button"
-              onClick={() => setIsSubscription(true)}
-              className={`px-4 py-2 cursor-pointer rounded-full text-sm font-medium transition ${
-                isSubscription ? "bg-brand-primary text-white" : "text-gray-600"
-              }`}
-            >
-              Subscription
-            </button>
-            <button
-              type="button"
-              onClick={() => setIsSubscription(false)}
-              className={`px-4 py-2 cursor-pointer rounded-full text-sm font-medium transition ${
-                !isSubscription ? "bg-brand-primary text-white" : "text-gray-600"
-              }`}
-            >
-              Once-off
-            </button>
-          </div>
-        </div>
-
-        {/* Pricing Cards */}
-        <div className="grid gap-8 md:grid-cols-3">
-          {plans.map((plan) => (
-            <div
-              key={plan.name}
-              className="bg-gray-50 rounded-lg shadow-sm p-6 text-left border hover:shadow-md transition"
-            >
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">{plan.name} Plan</h3>
-              <p className="text-3xl font-bold text-brand-primary mb-4">
-                R{isSubscription ? plan.priceMonthly : plan.priceOnceOff}
-                <span className="text-sm font-medium text-gray-500">
-                  {isSubscription ? "/mo" : " once-off"}
-                </span>
-              </p>
-              <ul className="text-sm text-gray-700 space-y-2 mb-6">
-                {plan.features.map((feature, idx) => (
-                  <li key={idx}>✓ {feature}</li>
-                ))}
-              </ul>
+          {/* Toggle Switch */}
+          <div className="flex justify-center mb-12">
+            <div className="inline-flex items-center bg-gray-100 rounded-full p-1">
               <button
                 type="button"
-                onClick={handleScrollToForm}
-                className="w-full cursor-pointer bg-brand-primary text-white py-2 px-4 rounded-md font-medium hover:bg-green-700 transition">
-                {isSubscription ? "Subscribe Now" : "Book Now"}
+                onClick={() => setIsSubscription(true)}
+                className={`px-4 py-2 cursor-pointer rounded-full text-sm font-medium transition ${
+                  isSubscription ? "bg-brand-primary text-white" : "text-gray-600"
+                }`}
+              >
+                Subscription
+              </button>
+              <button
+                type="button"
+                onClick={() => setIsSubscription(false)}
+                className={`px-4 py-2 cursor-pointer rounded-full text-sm font-medium transition ${
+                  !isSubscription ? "bg-[color:var(--primary)] text-white" : "text-gray-600"
+                }`}
+              >
+                Once-off
               </button>
             </div>
-          ))}
+          </div>
+
+          {/* Pricing Cards */}
+          <div className="grid gap-8 md:grid-cols-3 items-stretch">
+            {plans.map((plan) => (
+              <div
+                key={plan.name}
+                className="flex flex-col bg-gray-50 rounded-3xl shadow-sm p-6 text-left border hover:shadow-md transition"
+              >
+                <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                  {plan.name} Care
+                </h3>
+                <p
+                  className={`text-3xl font-bold mb-4 ${
+                    isSubscription ? "text-[color:var(--primary)]" : "text-[color:var(--primary)]"
+                  }`}
+                >
+                  R{isSubscription ? plan.priceMonthly : plan.priceOnceOff}
+                  <span className="text-sm font-medium text-gray-500">
+                    {isSubscription ? "/mo" : " once-off"}
+                  </span>
+                </p>
+
+                <ul className="text-sm text-gray-700 space-y-2 mb-6">
+                  {(isSubscription ? plan.featuresMonthly : plan.featuresOnceOff).map((feature, idx) => (
+                    <li key={idx}>✓ {feature}</li>
+                  ))}
+                </ul>
+
+                <button
+                  type="button"
+                  onClick={handleScrollToForm}
+                  className={`mt-auto w-full cursor-pointer text-white py-2 px-4 rounded-full font-medium transition ${
+                    isSubscription ? "bg-brand-primary" : "bg-[color:var(--primary)] hover:bg-[color:var(--secondary)]"
+                  }`}
+                >
+                  {isSubscription ? "Subscribe Now" : "Book Now"}
+                </button>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </FadeInOutSection>
   );
 };

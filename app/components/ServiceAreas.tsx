@@ -4,13 +4,14 @@ import React, { useState } from "react";
 import FadeInOutSection from "./FadeInOutSection";
 
 const cemeteries = [
-  "Westpark Cemetery – Johannesburg",
-  "Durbanville Memorial Park – Cape Town",
-  "Avalon Cemetery – Soweto",
-  "Stellawood Cemetery – Durban",
-  "Maitland Cemetery – Cape Town",
-  "Zandfontein Cemetery – Pretoria",
-  "Braamfontein Cemetery – Johannesburg",
+  "Alberton, Gauteng",
+  "Benoni, Gauteng",
+  "Brakpan, Gauteng",
+  "Boksburg, Gauteng",
+  "Edenvale, Gauteng",
+  "Germiston, Gauteng",
+  "Kempton Park, Gauteng",
+  "Springs, Gauteng",
 ];
 
 const ServiceAreas: React.FC = () => {
@@ -32,14 +33,14 @@ const ServiceAreas: React.FC = () => {
           Our Service Areas
         </h2>
         <p className="text-lg text-gray-600 mb-10">
-          We currently serve these cemeteries. Don’t see yours? You can request it below.
+          We proudly serve families in towns and cities across South Africa.
         </p>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 text-left mb-12">
+        <div className="flex flex-wrap justify-center gap-4 text-left mb-12">
           {cemeteries.map((cemetery, index) => (
             <div
               key={index}
-              className="bg-white rounded-md shadow-sm p-4 border hover:shadow-md transition"
+              className="bg-white rounded-3xl shadow-sm p-4 border hover:shadow-md transition"
             >
               <p className="text-gray-800 font-medium">{cemetery}</p>
             </div>
@@ -57,12 +58,12 @@ const ServiceAreas: React.FC = () => {
               value={request}
               onChange={(e) => setRequest(e.target.value)}
               placeholder="Enter cemetery name & location"
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-md"
+              className="flex-1 px-4 py-2 border border-gray-300 rounded-full"
               required
             />
             <button
               type="submit"
-              className="px-6 py-2 bg-brand-primary text-white rounded-md hover:bg-green-700 transition"
+              className="px-6 py-2 cursor-pointer bg-[color:var(--primary)] text-white rounded-full hover:bg-[color:var(--secondary)] transition"
             >
               Submit
             </button>

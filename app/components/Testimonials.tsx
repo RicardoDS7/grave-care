@@ -57,7 +57,7 @@ const TestimonialsCarousel: React.FC = () => {
           Heartfelt feedback from families we’ve served.
         </p>
 
-        <div className="bg-gray-50 rounded-lg shadow-sm p-8 relative">
+        <div className="bg-gray-50 rounded-3xl shadow-sm p-8 relative">
           <p className="text-xl italic text-gray-700 mb-6">“{current.quote}”</p>
 
           <div className="flex justify-center mb-2">

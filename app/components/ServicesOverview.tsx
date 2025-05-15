@@ -1,6 +1,7 @@
 // components/ServicesOverview.tsx
 import React from "react";
-import { FaBroom, FaSnowflake, FaCameraRetro } from "react-icons/fa";
+import { FaCameraRetro } from "react-icons/fa";
+import { GiGraveFlowers, GiPaintBrush  } from "react-icons/gi";
 import { PiFlowerLotusDuotone } from "react-icons/pi";
 import type { ReactElement } from "react";
 
@@ -13,30 +14,35 @@ type Service = {
 
 const services: Service[] = [
   {
-    icon: <FaBroom className="text-3xl text-brand-primary" />,
-    title: "Regular Cleaning & Maintenance",
-    description: "Gravesite cleaning, weeding, and general upkeep to keep the area respectful and neat.",
-    tag: "Recurring",
+    icon: <GiGraveFlowers className="text-3xl text-brand-primary" />,
+    title: "Grave Cleaning & Site Maintenance",
+    description:
+      "We gently clean headstones, remove weeds, and maintain the surrounding area — ensuring your loved one’s resting place remains dignified and well-kept.",
+    tag: "Included in All Plans",
   },
   {
     icon: <PiFlowerLotusDuotone className="text-3xl text-brand-primary" />,
-    title: "Flower & Wreath Placement",
-    description: "Fresh or artificial flower and wreath arrangements placed with care.",
-    tag: "One-time",
+    title: "Fresh Flowers & Tribute Placement",
+    description:
+      "Seasonal or custom floral arrangements delivered and placed with care — a beautiful way to honour your loved one’s memory from afar.",
+    tag: "Standard & Premium Plans",
   },
   {
-    icon: <FaSnowflake className="text-3xl text-brand-primary" />,
-    title: "Seasonal Care & Decoration",
-    description: "Special touches for holidays and seasonal changes—candles, ribbons, ornaments, etc.",
-    tag: "Custom",
+    icon: <GiPaintBrush className="text-3xl text-brand-primary" />,
+    title: "Headstone Restoration & Lettering",
+    description:
+      "We restore faded inscriptions and repaint lettering to preserve the legibility and dignity of the memorial.",
+    tag: "Once-off",
   },
   {
     icon: <FaCameraRetro className="text-3xl text-brand-primary" />,
-    title: "Grave Condition Reports",
-    description: "Receive dated photo documentation and notes with every visit.",
-    tag: "Optional",
+    title: "Photo Updates & Flexible Plans",
+    description:
+      "Get peace of mind with timestamped photo proof after every visit. Choose a once-off service or a recurring subscription to suit your needs.",
+    tag: "Included in All Plans",
   },
 ];
+
 
 const ServicesOverview: React.FC = () => {
   return (
@@ -53,7 +59,7 @@ const ServicesOverview: React.FC = () => {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white shadow-sm rounded-lg p-6 text-center hover:shadow-md transition"
+              className="bg-white shadow-sm rounded-3xl p-6 text-center hover:shadow-md transition"
             >
               <div className="mb-4 flex justify-center">{service.icon}</div>
               <h3 className="text-xl font-semibold text-gray-800 mb-2">
