@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import { handleScrollToForm } from "../utils/handleScrollToForm";
+import FadeInOutSection from "./FadeInOutSection";
 
 type Plan = {
   name: string;
@@ -34,6 +36,7 @@ const PricingPlans: React.FC = () => {
   const [isSubscription, setIsSubscription] = useState(true);
 
   return (
+    <FadeInOutSection>
     <section id="pricing" className="bg-white py-20 px-6">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
@@ -47,16 +50,18 @@ const PricingPlans: React.FC = () => {
         <div className="flex justify-center mb-12">
           <div className="inline-flex items-center bg-gray-100 rounded-full p-1">
             <button
+              type="button"
               onClick={() => setIsSubscription(true)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+              className={`px-4 py-2 cursor-pointer rounded-full text-sm font-medium transition ${
                 isSubscription ? "bg-brand-primary text-white" : "text-gray-600"
               }`}
             >
               Subscription
             </button>
             <button
+              type="button"
               onClick={() => setIsSubscription(false)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition ${
+              className={`px-4 py-2 cursor-pointer rounded-full text-sm font-medium transition ${
                 !isSubscription ? "bg-brand-primary text-white" : "text-gray-600"
               }`}
             >
@@ -84,7 +89,10 @@ const PricingPlans: React.FC = () => {
                   <li key={idx}>✓ {feature}</li>
                 ))}
               </ul>
-              <button className="w-full bg-brand-primary text-white py-2 px-4 rounded-md font-medium hover:bg-green-700 transition">
+              <button
+                type="button"
+                onClick={handleScrollToForm}
+                className="w-full cursor-pointer bg-brand-primary text-white py-2 px-4 rounded-md font-medium hover:bg-green-700 transition">
                 {isSubscription ? "Subscribe Now" : "Book Now"}
               </button>
             </div>
@@ -92,6 +100,7 @@ const PricingPlans: React.FC = () => {
         </div>
       </div>
     </section>
+    </FadeInOutSection>
   );
 };
 

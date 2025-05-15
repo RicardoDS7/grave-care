@@ -24,7 +24,7 @@ const HeroSection: React.FC = () => {
         <button
             type="button"
             onClick={handleScrollToForm}
-            className="mt-8 bg-brand-primary text-white px-8 py-3 text-lg font-semibold rounded-md hover:bg-green-700 transition cursor-pointer"
+            className="mt-8 bg-brand-primary text-white px-8 py-3 text-lg font-semibold rounded-full hover:bg-green-700 transition cursor-pointer"
             >
             Get Started
         </button>

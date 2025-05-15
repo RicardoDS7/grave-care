@@ -7,7 +7,7 @@ export default function Header() {
     <header className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Brand */}
-        <Link href="/" className="text-xl font-bold text-brand-primary tracking-tight">
+        <Link href="/" className="text-3xl font-bold text-brand-primary tracking-tight">
           <h1>GraveCare</h1>
         </Link>
 

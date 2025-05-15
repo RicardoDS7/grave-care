@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import FadeInOutSection from "./FadeInOutSection";
 
 const cemeteries = [
   "Westpark Cemetery – Johannesburg",
@@ -24,6 +25,7 @@ const ServiceAreas: React.FC = () => {
   };
 
   return (
+    <FadeInOutSection>
     <section id="service-areas" className="bg-gray-50 py-20 px-6">
       <div className="max-w-5xl mx-auto text-center">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
@@ -68,6 +70,7 @@ const ServiceAreas: React.FC = () => {
         </form>
       </div>
     </section>
+  </FadeInOutSection>
   );
 };
 

@@ -5,9 +5,7 @@ import { basePath } from "./utils/basePath";
 import GetStartedForm from "./components/GetStartedForm";
 import HeroSection from "./components/HeroSection";
 import ServicesOverview from "./components/ServicesOverview";
-import PricingPlans from "./components/PricingPlans";
 import HowItWorks from "./components/HowItWorks";
-import ServiceAreas from "./components/ServiceAreas";
 import FinalCtaBanner from "./components/CTA";
 import Footer from "./components/Footer";
 import dynamic from "next/dynamic";
@@ -24,6 +22,10 @@ const FaqSection = dynamic(() => import("./components/FAQ"), {
   ssr: false,
 });
 
+const PricingPlans = dynamic(() => import("./components/PricingPlans"), { ssr: false });
+
+const ServiceAreas = dynamic(() => import("./components/ServiceAreas"), { ssr: false });
+
 
 export default function Home() {
   return (
@@ -34,7 +36,6 @@ export default function Home() {
       <ServicesOverview />
 
       <PricingPlans />
-
       <HowItWorks />
 
       <TestimonialsCarousel />
