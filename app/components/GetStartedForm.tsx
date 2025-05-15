@@ -128,7 +128,7 @@ export default function GetStartedForm() {
 
           <button
             type="submit"
-            className="w-full bg-brand-primary text-white px-6 py-3 rounded-md font-semibold hover:bg-green-700 transition"
+            className="w-full bg-[color:var(--primary)] text-white px-6 py-3 rounded-full font-semibold hover:bg-[color:var(--secondary)] transition"
           >
             Submit Request
           </button>
