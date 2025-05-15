@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { basePath } from "../utils/basePath";
 
 const HeroSection: React.FC = () => {
   const handleScrollToForm = () => {
@@ -15,7 +16,7 @@ const HeroSection: React.FC = () => {
       {/* Background Video */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
-        src="/gravecare-hero.mp4"
+        src={`${basePath}/gravecare-hero.mp4`}
         poster="/images/hero-poster.jpg"
         autoPlay
         muted
