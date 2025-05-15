@@ -12,11 +12,19 @@ export default function Header() {
         </Link>
 
         {/* Navigation */}
-        <nav className="hidden sm:flex gap-6 text-sm text-gray-600">
-          <a href="#get-started-form" className="hover:text-brand-primary">Services</a>
-          <a href="#" className="hover:text-brand-primary">About</a>
-          <a href="#" className="hover:text-brand-primary">Contact</a>
+        <nav className="hidden sm:flex items-center gap-6 text-sm text-gray-600">
+          <a href="#how-it-works" className="hover:text-brand-primary">How It Works</a>
+          <a href="#services" className="hover:text-brand-primary">Pricing & Services</a>
+          <a href="#gallery" className="hover:text-brand-primary">Before & After</a>
+          
+          <a
+            href="#get-started-form"
+            className="bg-brand-primary text-white font-medium px-4 py-2 rounded-full hover:bg-green-700 transition"
+          >
+            Get Started
+          </a>
         </nav>
+
       </div>
     </header>
   );
