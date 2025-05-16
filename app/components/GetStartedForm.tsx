@@ -2,7 +2,7 @@
 
 import emailjs from 'emailjs-com';
 // import ReCAPTCHA from "react-google-recaptcha";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 // const recaptchaRef = useRef<ReCAPTCHA>(null);
 // const [verified, setVerified] = useState(false);
