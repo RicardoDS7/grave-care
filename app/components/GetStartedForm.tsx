@@ -1,6 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import emailjs from 'emailjs-com';
+// import ReCAPTCHA from "react-google-recaptcha";
+import { useRef, useState } from "react";
+
+// const recaptchaRef = useRef<ReCAPTCHA>(null);
+// const [verified, setVerified] = useState(false);
+
+// <ReCAPTCHA
+//   sitekey="YOUR_SITE_KEY"
+//   onChange={(token) => {
+//     if (token) setVerified(true);
+//   }}
+//   ref={recaptchaRef}
+// />
+
 
 export default function GetStartedForm() {
   const [form, setForm] = useState({
@@ -19,11 +33,29 @@ export default function GetStartedForm() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log(form);
-    // TODO: connect to Supabase, Firebase or an email service
-  };
+ const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+
+  // const token = recaptchaRef.current?.getValue();
+
+  // if (!token) {
+  //   alert("Please complete the reCAPTCHA.");
+  //   return;
+  // }
+
+  emailjs
+    .sendForm('service_hng0fk9', 'template_wso4fvf', e.target as HTMLFormElement, 'RqlLJpvL8g5sgeNCO')
+    .then(
+      (result) => {
+        console.log('Success:', result.text);
+        alert('Form submitted successfully!');
+      },
+      (error) => {
+        console.log('Error:', error.text);
+        alert('There was an error sending your message.');
+      }
+    );
+};
 
   const plans = [
   {

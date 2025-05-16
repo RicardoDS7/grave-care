@@ -1,9 +1,12 @@
+import { Mail } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
+
 const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-900 text-gray-300 py-10 px-6">
       <div className="max-w-6xl mx-auto grid sm:grid-cols-2 md:grid-cols-3 gap-8 text-sm">
         <div>
-          <h4 className="text-white font-semibold mb-3">GraveCare</h4>
+          <h3 className="text-white font-semibold mb-3 text-lg">GraveCare</h3>
           <p>Professional gravesite care across South Africa. Trusted by families everywhere.</p>
         </div>
         <div>
@@ -17,9 +20,23 @@ const Footer: React.FC = () => {
         </div>
         <div>
           <h4 className="text-white font-semibold mb-3">Contact</h4>
-          <p>Email: support@gravecare.co.za</p>
-          <p className="mt-1">Phone: +27 71 234 5678</p>
-          <p className="mt-1">Based in South Africa</p>
+          <div className="flex flex-col items-start gap-4 mb-4">
+          <a
+            href="https://wa.me/27688625442?text=Hi%20,%20I'm%20interested%20in%20your%20grave%20care%20services"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 hover:underline text-white rounded-full transition"
+          >
+            <FaWhatsapp className="text-2xl" />
+            Chat on WhatsApp
+          </a>
+
+          <a href="mailto:support@gravecare.co.za"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-white rounded-full hover:underline transition">
+              <Mail className="text-lg"/>support@gravecare.co.za</a>
+          </div>
         </div>
       </div>
 
