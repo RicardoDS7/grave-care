@@ -15,7 +15,7 @@ type Plan = {
 const plans: Plan[] = [
   {
     name: "Basic",
-    priceMonthly: 199,
+    priceMonthly: 189,
     priceOnceOff: 249,
     featuresMonthly: [
       "Monthly cleaning",
@@ -30,8 +30,8 @@ const plans: Plan[] = [
   },
   {
     name: "Standard",
-    priceMonthly: 449,
-    priceOnceOff: 649,
+    priceMonthly: 629,
+    priceOnceOff: 699,
     featuresMonthly: [
       "Bi-weekly cleaning",
       "Fresh flower placement",
@@ -45,8 +45,8 @@ const plans: Plan[] = [
   },
   {
     name: "Premium",
-    priceMonthly: 749,
-    priceOnceOff: 899,
+    priceMonthly: 1319,
+    priceOnceOff: 1499,
     featuresMonthly: [
       "Weekly cleaning",
       "Premium flowers",

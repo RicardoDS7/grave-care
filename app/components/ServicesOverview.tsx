@@ -1,9 +1,12 @@
 // components/ServicesOverview.tsx
 import React from "react";
-import { FaCameraRetro } from "react-icons/fa";
-import { GiGraveFlowers, GiPaintBrush  } from "react-icons/gi";
-import { PiFlowerLotusDuotone } from "react-icons/pi";
 import type { ReactElement } from "react";
+import {
+  Leaf,
+  Flower2,
+  Brush,
+  Camera,
+} from "lucide-react";
 
 type Service = {
   icon: ReactElement;
@@ -14,34 +17,35 @@ type Service = {
 
 const services: Service[] = [
   {
-    icon: <GiGraveFlowers className="text-3xl text-brand-primary" />,
+    icon: <Leaf className="w-8 h-8 text-brand-primary" />,
     title: "Grave Cleaning & Site Maintenance",
     description:
       "We gently clean headstones, remove weeds, and maintain the surrounding area — ensuring your loved one’s resting place remains dignified and well-kept.",
     tag: "Included in All Plans",
   },
   {
-    icon: <PiFlowerLotusDuotone className="text-3xl text-brand-primary" />,
+    icon: <Flower2 className="w-8 h-8 text-brand-primary" />,
     title: "Fresh Flowers & Tribute Placement",
     description:
       "Seasonal or custom floral arrangements delivered and placed with care — a beautiful way to honour your loved one’s memory from afar.",
     tag: "Standard & Premium Plans",
   },
   {
-    icon: <GiPaintBrush className="text-3xl text-brand-primary" />,
+    icon: <Brush className="w-8 h-8 text-brand-primary" />,
     title: "Headstone Restoration & Lettering",
     description:
       "We restore faded inscriptions and repaint lettering to preserve the legibility and dignity of the memorial.",
     tag: "Once-off",
   },
   {
-    icon: <FaCameraRetro className="text-3xl text-brand-primary" />,
+    icon: <Camera className="w-8 h-8 text-brand-primary" />,
     title: "Photo Updates & Flexible Plans",
     description:
       "Get peace of mind with timestamped photo proof after every visit. Choose a once-off service or a recurring subscription to suit your needs.",
     tag: "Included in All Plans",
   },
 ];
+
 
 
 const ServicesOverview: React.FC = () => {

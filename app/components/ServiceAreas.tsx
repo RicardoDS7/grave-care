@@ -52,7 +52,7 @@ const ServiceAreas: React.FC = () => {
           <label className="block text-sm font-medium text-gray-700 mb-2">
             Can’t find your cemetery? Request it here:
           </label>
-          <div className="flex gap-3">
+          <div className="flex flex-col md:flex-row gap-3">
             <input
               type="text"
               value={request}
@@ -63,7 +63,7 @@ const ServiceAreas: React.FC = () => {
             />
             <button
               type="submit"
-              className="px-6 py-2 cursor-pointer bg-[color:var(--primary)] text-white rounded-full hover:bg-[color:var(--secondary)] transition"
+              className="mx-auto px-6 py-2 cursor-pointer bg-[color:var(--primary)] text-white rounded-full hover:bg-[color:var(--secondary)] transition"
             >
               Submit
             </button>

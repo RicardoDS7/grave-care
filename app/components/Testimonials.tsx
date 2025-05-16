@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { FaStar } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Testimonial = {
   quote: string;
@@ -37,7 +38,6 @@ const testimonials: Testimonial[] = [
 const TestimonialsCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Auto-advance every 6 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -46,7 +46,6 @@ const TestimonialsCarousel: React.FC = () => {
   }, []);
 
   const goTo = (index: number) => setCurrentIndex(index);
-
   const current = testimonials[currentIndex];
 
   return (
@@ -57,31 +56,40 @@ const TestimonialsCarousel: React.FC = () => {
           Heartfelt feedback from families we’ve served.
         </p>
 
-        <div className="bg-gray-50 rounded-3xl shadow-sm p-8 relative">
-          <p className="text-xl italic text-gray-700 mb-6">“{current.quote}”</p>
+        <div className="bg-gray-50 rounded-3xl shadow-sm p-8 relative h-[260px] sm:h-[220px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -50 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0 mt-6 px-4 sm:px-6"
+            >
+              <p className="text-xl italic text-gray-700 mb-6">“{current.quote}”</p>
 
-          <div className="flex justify-center mb-2">
-            {Array.from({ length: current.rating }).map((_, i) => (
-              <FaStar key={i} className="text-yellow-400 text-sm" />
-            ))}
-          </div>
+              <div className="flex justify-center mb-2">
+                {Array.from({ length: current.rating }).map((_, i) => (
+                  <FaStar key={i} className="text-yellow-400 text-sm" />
+                ))}
+              </div>
 
-          <p className="font-semibold text-gray-800">{current.name}</p>
-          <p className="text-sm text-gray-500">{current.location}</p>
-
-          {/* Dots Navigation */}
-          <div className="flex justify-center gap-2 mt-6">
-            {testimonials.map((_, i) => (
+              <p className="font-semibold text-gray-800">{current.name}</p>
+              <p className="text-sm text-gray-500">{current.location}</p>
+            </motion.div>
+          </AnimatePresence>
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+            {testimonials.map((_, index) => (
               <button
-                key={i}
-                onClick={() => goTo(i)}
+                key={index}
+                onClick={() => goTo(index)}
                 className={`w-3 h-3 rounded-full ${
-                  i === currentIndex ? "bg-brand-primary" : "bg-gray-300"
+                  currentIndex === index ? "bg-[color:var(--primary)]" : "bg-gray-300"
                 }`}
               />
-            ))}
-          </div>
+            ))}                
         </div>
+      </div>
       </div>
     </section>
   );

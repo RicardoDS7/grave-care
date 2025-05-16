@@ -1,7 +1,16 @@
 const FinalCtaBanner: React.FC = () => {
   return (
-    <section className="bg-brand-primary text-white py-16 px-6 text-center">
-      <div className="max-w-3xl mx-auto">
+    <section
+      className="relative bg-center bg-cover bg-no-repeat text-white py-40 px-6 text-center"
+      style={{
+        backgroundImage: "url('/cta_cover.png')",
+      }}
+    >
+      {/* Optional dark overlay */}
+      <div className="absolute inset-0 bg-black/50 z-0" />
+
+      {/* Content */}
+      <div className="relative z-10 max-w-3xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
           Honour Their Memory with Ongoing Care
         </h2>
@@ -10,7 +19,7 @@ const FinalCtaBanner: React.FC = () => {
         </p>
         <a
           href="#get-started-form"
-          className="inline-block bg-white text-brand-primary font-semibold px-8 py-3 rounded-md hover:bg-gray-100 transition"
+          className="inline-block bg-white text-brand-primary font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition"
         >
           Get Started
         </a>
