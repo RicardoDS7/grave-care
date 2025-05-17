@@ -26,6 +26,9 @@ jobs:
       - name: Build static site
         run: npm run deploy
 
+      - name: Add CNAME for custom domain
+        run: echo www.gravecare.co.za > out/CNAME
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
