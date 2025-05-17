@@ -1,170 +1,82 @@
 'use client';
 
+import { useRef, useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import emailjs from 'emailjs-com';
-// import ReCAPTCHA from "react-google-recaptcha";
-import { useState } from "react";
-
-// const recaptchaRef = useRef<ReCAPTCHA>(null);
-// const [verified, setVerified] = useState(false);
-
-// <ReCAPTCHA
-//   sitekey="YOUR_SITE_KEY"
-//   onChange={(token) => {
-//     if (token) setVerified(true);
-//   }}
-//   ref={recaptchaRef}
-// />
-
 
 export default function GetStartedForm() {
-  const [form, setForm] = useState({
-  firstName: '',
-  lastName: '',
-  mobile: '',
-  email: '',
-  cemetery: '',
-  reference: '',
-  plan: '',
-  frequency: '',
-});
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [verified, setVerified] = useState(false);
 
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    mobile: '',
+    email: '',
+    cemetery: '',
+    reference: '',
+    plan: '',
+    frequency: '',
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
- const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
-  // const token = recaptchaRef.current?.getValue();
+    const token = recaptchaRef.current?.getValue();
+    if (!token) {
+      alert("Please complete the reCAPTCHA.");
+      return;
+    }
 
-  // if (!token) {
-  //   alert("Please complete the reCAPTCHA.");
-  //   return;
-  // }
-
-  emailjs
-    .sendForm('service_hng0fk9', 'template_wso4fvf', e.target as HTMLFormElement, 'RqlLJpvL8g5sgeNCO')
-    .then(
-      (result) => {
-        console.log('Success:', result.text);
-        alert('Form submitted successfully!');
-      },
-      (error) => {
-        console.log('Error:', error.text);
-        alert('There was an error sending your message.');
-      }
-    );
-};
+    emailjs
+      .sendForm(
+        'service_hng0fk9',
+        'template_wso4fvf',
+        e.target as HTMLFormElement,
+        'RqlLJpvL8g5sgeNCO'
+      )
+      .then(
+        (result) => {
+          console.log('Success:', result.text);
+          alert('Form submitted successfully!');
+        },
+        (error) => {
+          console.log('Error:', error.text);
+          alert('There was an error sending your message.');
+        }
+      );
+  };
 
   const plans = [
-  {
-    name: "Basic Care",
-    priceMonthly: 199,
-    priceOnceOff: 249,
-    description: "",
-  },
-  {
-    name: "Standard care",
-    priceMonthly: 629,
-    priceOnceOff: 699,
-    description: "",
-  },
-  {
-    name: "Premium Care",
-    priceMonthly: 1319,
-    priceOnceOff: 1399,
-    description: "",
-  },
-];
-
-
+    { name: 'Basic Care', priceMonthly: 199, priceOnceOff: 249, description: '' },
+    { name: 'Standard Care', priceMonthly: 629, priceOnceOff: 699, description: '' },
+    { name: 'Premium Care', priceMonthly: 1319, priceOnceOff: 1399, description: '' },
+  ];
 
   return (
     <section id="get-started-form" className="px-6 py-20 bg-gray-50">
       <div className="max-w-xl mx-auto text-center">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Start Your Request</h2>
         <form onSubmit={handleSubmit} className="space-y-4 text-left">
+          {/* Name Fields */}
           <div className="grid sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700">First Name</label>
-              <input
-                type="text"
-                name="firstName"
-                value={form.firstName}
-                onChange={handleChange}
-                placeholder="e.g. Thabo"
-                className="w-full px-4 py-2 border border-gray-300 rounded-full"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Surname</label>
-              <input
-                type="text"
-                name="lastName"
-                value={form.lastName}
-                onChange={handleChange}
-                placeholder="e.g. Mokoena"
-                className="w-full px-4 py-2 border border-gray-300 rounded-full"
-                required
-              />
-            </div>
+            <InputField label="First Name" name="firstName" value={form.firstName} onChange={handleChange} />
+            <InputField label="Surname" name="lastName" value={form.lastName} onChange={handleChange} />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Mobile Number</label>
-            <input
-              type="tel"
-              name="mobile"
-              value={form.mobile}
-              onChange={handleChange}
-              placeholder="e.g. 082 123 4567"
-              className="w-full px-4 py-2 border border-gray-300 rounded-full"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Email Address</label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="e.g. you@example.com"
-              className="w-full px-4 py-2 border border-gray-300 rounded-full"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700">Cemetery Name</label>
-            <input
-              type="text"
-              name="cemetery"
-              value={form.cemetery}
-              onChange={handleChange}
-              placeholder="e.g. Westpark Cemetery"
-              className="w-full px-4 py-2 border border-gray-300 rounded-full"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Name of the Deceased or Tombstone Number
-            </label>
-            <input
-              type="text"
-              name="reference"
-              value={form.reference}
-              onChange={handleChange}
-              placeholder="e.g. Maria van der Merwe or Plot A32"
-              className="w-full px-4 py-2 border border-gray-300 rounded-full"
-              required
-            />
-          </div>
+          <InputField label="Mobile Number" name="mobile" type="tel" value={form.mobile} onChange={handleChange} />
+          <InputField label="Email Address" name="email" type="email" value={form.email} onChange={handleChange} />
+          <InputField label="Cemetery Name" name="cemetery" value={form.cemetery} onChange={handleChange} />
+          <InputField
+            label="Name of the Deceased or Tombstone Number"
+            name="reference"
+            value={form.reference}
+            onChange={handleChange}
+          />
 
           {/* Plan Selection */}
           <div>
@@ -212,8 +124,19 @@ export default function GetStartedForm() {
             </div>
           </div>
 
+          {/* reCAPTCHA */}
+          <div className="pt-4">
+            <ReCAPTCHA
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
+            onChange={(token: string | null) => {
+              if (token) setVerified(true);
+            }}
+            ref={recaptchaRef}
+          />
 
+          </div>
 
+          {/* Submit Button */}
           <button
             type="submit"
             className="cursor-pointer w-full bg-[color:var(--primary)] text-white px-6 py-3 rounded-full font-semibold hover:bg-[color:var(--secondary)] transition"
@@ -223,5 +146,30 @@ export default function GetStartedForm() {
         </form>
       </div>
     </section>
+  );
+}
+
+type InputFieldProps = {
+  label: string;
+  name: string;
+  type?: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+function InputField({ label, name, type = "text", value, onChange }: InputFieldProps) {
+  return (
+    <div>
+      <label className="block text-sm font-medium text-gray-700">{label}</label>
+      <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={`e.g. ${label}`}
+        className="w-full px-4 py-2 border border-gray-300 rounded-full"
+        required
+      />
+    </div>
   );
 }
