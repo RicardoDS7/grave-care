@@ -1,22 +1,14 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
-const repo   = "grave-care";
-
 const nextConfig: NextConfig = {
   output: "export",
 
-  // in prod, all pages + assets live under /grave-care
-  basePath:   isProd ? `/${repo}`   : "",
-  assetPrefix:isProd ? `/${repo}/`  : "",
-
-  // for <Image> to work in a static-export
+  // ✅ Remove basePath and assetPrefix for custom domain hosting at root
   images: {
-    unoptimized: true,
+    unoptimized: true, // Required for static export to work with <Image>
   },
 
-  // optional, but keeps your URLs ending in “/”
-  trailingSlash: true,
+  trailingSlash: true, // Optional: keeps URLs consistent with a slash
 };
 
 export default nextConfig;
