@@ -25,6 +25,8 @@ jobs:
 
       - name: Build static site
         run: npm run deploy
+        env:
+          NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY }}
 
       - name: Add CNAME for custom domain
         run: echo www.gravecare.co.za > out/CNAME
