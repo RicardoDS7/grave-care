@@ -19,6 +19,22 @@ export default function GetStartedForm() {
     frequency: '',
   });
 
+  const resetForm = () => {
+  setForm({
+    firstName: '',
+    lastName: '',
+    mobile: '',
+    email: '',
+    cemetery: '',
+    reference: '',
+    plan: '',
+    frequency: '',
+  });
+
+  recaptchaRef.current?.reset();
+};
+
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -53,6 +69,7 @@ export default function GetStartedForm() {
           (result) => {
             console.log('Success:', result.text);
             alert('Form submitted successfully!');
+            resetForm(); // ✅ Clear the form
           },
           (error) => {
             console.log('Error:', error.text);
@@ -134,6 +151,10 @@ export default function GetStartedForm() {
               ))}
             </div>
           </div>
+
+          <input type="hidden" name="plan" value={form.plan} />
+          <input type="hidden" name="frequency" value={form.frequency} />
+
 
           {/* reCAPTCHA */}
           <div className="pt-4">
