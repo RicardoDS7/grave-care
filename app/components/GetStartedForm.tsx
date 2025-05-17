@@ -6,7 +6,7 @@ import emailjs from 'emailjs-com';
 
 export default function GetStartedForm() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const [verified, setVerified] = useState(false);
+
 
   const [form, setForm] = useState({
     firstName: '',
@@ -127,12 +127,14 @@ export default function GetStartedForm() {
           {/* reCAPTCHA */}
           <div className="pt-4">
             <ReCAPTCHA
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
-            onChange={(token: string | null) => {
-              if (token) setVerified(true);
-            }}
-            ref={recaptchaRef}
-          />
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY as string}
+              onChange={(token: string | null) => {
+                // No need to set state — token is checked directly in handleSubmit
+                console.log("reCAPTCHA token:", token);
+              }}
+              ref={recaptchaRef}
+            />
+
 
           </div>
 
