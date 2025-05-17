@@ -24,32 +24,43 @@ export default function GetStartedForm() {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+      e.preventDefault();
 
-    const token = recaptchaRef.current?.getValue();
-    if (!token) {
-      alert("Please complete the reCAPTCHA.");
-      return;
-    }
+      const token = recaptchaRef.current?.getValue();
+      if (!token) {
+        alert("Please complete the reCAPTCHA.");
+        return;
+      }
 
-    emailjs
-      .sendForm(
-        'service_hng0fk9',
-        'template_wso4fvf',
-        e.target as HTMLFormElement,
-        'RqlLJpvL8g5sgeNCO'
-      )
-      .then(
-        (result) => {
-          console.log('Success:', result.text);
-          alert('Form submitted successfully!');
-        },
-        (error) => {
-          console.log('Error:', error.text);
-          alert('There was an error sending your message.');
-        }
-      );
-  };
+      if (!form.plan) {
+        alert("Please select a Care Plan.");
+        return;
+      }
+
+      if (!form.frequency) {
+        alert("Please select a Service Frequency.");
+        return;
+      }
+
+      emailjs
+        .sendForm(
+          'service_hng0fk9',
+          'template_wso4fvf',
+          e.target as HTMLFormElement,
+          'RqlLJpvL8g5sgeNCO'
+        )
+        .then(
+          (result) => {
+            console.log('Success:', result.text);
+            alert('Form submitted successfully!');
+          },
+          (error) => {
+            console.log('Error:', error.text);
+            alert('There was an error sending your message.');
+          }
+        );
+    };
+
 
   const plans = [
     { name: 'Basic Care', priceMonthly: 199, priceOnceOff: 249, description: '' },
