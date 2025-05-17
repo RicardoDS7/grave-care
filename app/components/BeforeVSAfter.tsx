@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import FadeInOutSection from "./FadeInOutSection";
-import { basePath } from "../utils/basePath";
 
 type GalleryItem = {
   beforeImg: string;
@@ -13,13 +12,13 @@ type GalleryItem = {
 
 const galleryItems: GalleryItem[] = [
   {
-    beforeImg: `${basePath}/before1.png`,
-    afterImg: `${basePath}/after1.png`,
+    beforeImg: `/before1.png`,
+    afterImg: `/after1.png`,
     caption: "Westpark Cemetery – Jan 2024",
   },
   {
-    beforeImg: `${basePath}/before2.png`,
-    afterImg: `${basePath}/after2.png`,
+    beforeImg: `/before2.png`,
+    afterImg: `/after2.png`,
     caption: "Stellawood – Feb 2024",
   }
 ];
