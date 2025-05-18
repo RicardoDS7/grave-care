@@ -1,11 +1,6 @@
 export default function Head() {
   return (
     <>
-      <title>GraveCare SA | Grave Cleaning & Tombstone Maintenance in South Africa</title>
-      <meta
-        name="description"
-        content="Affordable and respectful grave care services in South Africa. We offer grave cleaning, tombstone maintenance, and flower placements. Book online to honor your loved ones today."
-      />
 
       {/* Optional preconnect to speed up Google Fonts */}
       <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -1,6 +1,6 @@
 import "./globals.css";
 import ClientHeader from "./components/ClientHeader";
-
+import { Metadata } from "next";
 import { Inter } from 'next/font/google';
 import { Playfair_Display } from 'next/font/google';
 
@@ -16,6 +16,14 @@ const playfair = Playfair_Display({
   weight: ['500', '700'],
   display: 'swap',
 });
+
+// layout.tsx
+export const metadata: Metadata = {
+  title: "GraveCare SA | Grave Cleaning & Tombstone Maintenance in South Africa",
+  description:
+    "Affordable and respectful grave care services in South Africa. We offer grave cleaning, tombstone maintenance, and flower placements. Book online to honor your loved ones today.",
+};
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
