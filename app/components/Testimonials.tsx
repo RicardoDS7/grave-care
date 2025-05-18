@@ -16,21 +16,21 @@ const testimonials: Testimonial[] = [
     quote:
       "GraveCare helped us honour my mom’s memory beautifully. The photos meant the world to us since we live overseas.",
     name: "Lebo M.",
-    location: "Johannesburg, SA",
+    location: "Benoni, SA",
     rating: 5,
   },
   {
     quote:
       "I was skeptical at first, but they exceeded my expectations. The grave looked cleaner than I’ve seen it in years.",
     name: "David K.",
-    location: "Cape Town, SA",
+    location: "Boksburg, SA",
     rating: 4,
   },
   {
     quote:
       "Thank you for helping us stay connected to our loved ones. The seasonal flowers are such a thoughtful touch.",
     name: "Nomsa P.",
-    location: "Durban, SA",
+    location: "Germiston, SA",
     rating: 5,
   },
 ];
