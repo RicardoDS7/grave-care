@@ -88,7 +88,7 @@ export default function GetStartedForm() {
   return (
     <section id="get-started-form" className="px-6 py-20 bg-gray-50">
       <div className="max-w-xl mx-auto text-center">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">Start Your Request</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Start Your Request</h2>
         <form onSubmit={handleSubmit} className="space-y-4 text-left">
           {/* Name Fields */}
           <div className="grid sm:grid-cols-2 gap-4">

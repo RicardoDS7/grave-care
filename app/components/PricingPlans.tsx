@@ -130,9 +130,8 @@ const PricingPlans: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleScrollToForm}
-                  className={`mt-auto w-full cursor-pointer text-white py-2 px-4 rounded-full font-medium transition ${
-                    isSubscription ? "bg-brand-primary" : "bg-[color:var(--primary)] hover:bg-[color:var(--secondary)]"
-                  }`}
+                  className={`mt-auto w-full cursor-pointer text-white py-2 px-4 rounded-full font-medium transition bg-[color:var(--primary)] hover:bg-[color:var(--secondary)]`
+                  }
                 >
                   {isSubscription ? "Subscribe Now" : "Book Now"}
                 </button>

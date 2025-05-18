@@ -20,7 +20,7 @@ const FinalCtaBanner: React.FC = () => {
         </p>
         <a
           href="#get-started-form"
-          className="inline-block bg-white text-brand-primary font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition"
+          className="inline-block bg-white text-brand-primary font-semibold px-8 py-3 rounded-full hover:bg-gray-100 transition hover:text-[color:var(--secondary)]"
         >
           Get Started
         </a>
