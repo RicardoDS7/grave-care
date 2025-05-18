@@ -4,7 +4,7 @@ const FinalCtaBanner: React.FC = () => {
     <section
       className="relative bg-center bg-cover bg-no-repeat text-white py-40 px-6 text-center"
       style={{
-        backgroundImage: `url('/cta_cover.png')`,
+        backgroundImage: `url('/cta_cover.webp')`,
       }}
     >
       {/* Optional dark overlay */}

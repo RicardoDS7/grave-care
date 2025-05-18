@@ -17,7 +17,7 @@ const HeroSection: React.FC = () => {
     >
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
-        src={`/gravecare-background.mp4`}
+        src={`/gravecare-background.webm`}
         autoPlay
         muted
         loop
