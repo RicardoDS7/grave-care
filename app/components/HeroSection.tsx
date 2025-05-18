@@ -11,16 +11,18 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative w-full h-screen overflow-hidden">
-      {/* Background Video */}
+    <section
+      className="relative w-full h-screen overflow-hidden"
+      style={{ backgroundImage: `url('/hero-background-cover.webp')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
+    >
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"
         src={`/gravecare-background.mp4`}
-        poster="/images/hero-poster.jpg"
         autoPlay
         muted
         loop
         playsInline
+        preload="none"
       />
       {/* Overlay for contrast */}
       <div className="absolute inset-0 bg-black/50" />
