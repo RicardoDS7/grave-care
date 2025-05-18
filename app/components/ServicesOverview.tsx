@@ -20,28 +20,28 @@ const services: Service[] = [
     icon: <Leaf className="w-8 h-8 text-brand-primary" />,
     title: "Grave Cleaning & Site Maintenance",
     description:
-      "We gently clean headstones, remove weeds, and maintain the surrounding area — ensuring your loved one’s resting place remains dignified and well-kept.",
+      "We gently clean headstones, remove weeds, and tidy the surrounding area — keeping your loved one’s resting place beautiful, dignified, and well cared for.",
     tag: "Included in All Plans",
   },
   {
     icon: <Flower2 className="w-8 h-8 text-brand-primary" />,
     title: "Fresh Flowers & Tribute Placement",
     description:
-      "Seasonal or custom floral arrangements delivered and placed with care — a beautiful way to honour your loved one’s memory from afar.",
+      "Seasonal or custom flower arrangements are thoughtfully placed at the grave — a meaningful way to honour your loved one’s memory, no matter where you are.",
     tag: "Standard & Premium Plans",
   },
   {
     icon: <Brush className="w-8 h-8 text-brand-primary" />,
     title: "Headstone Restoration & Lettering",
     description:
-      "We restore faded inscriptions and repaint lettering to preserve the legibility and dignity of the memorial.",
-    tag: "Once-off",
+      "We restore weathered headstones by repainting faded lettering and renewing inscriptions — preserving the name and legacy engraved in stone.",
+    tag: "Premium & Once-off Plans",
   },
   {
     icon: <Camera className="w-8 h-8 text-brand-primary" />,
     title: "Photo Updates & Flexible Plans",
     description:
-      "Get peace of mind with timestamped photo proof after every visit. Choose a once-off service or a recurring subscription to suit your needs.",
+      "We’ll keep you connected with clear, timestamped photos after every visit — choose a once-off service or a flexible subscription that fits your needs.",
     tag: "Included in All Plans",
   },
 ];
@@ -56,7 +56,7 @@ const ServicesOverview: React.FC = () => {
           What We Do
         </h2>
         <p className="text-lg text-gray-600 mb-12">
-          Compassionate, consistent gravesite care—delivered with dignity and photo proof.
+          We provide meticulous cleaning, maintenance, and beautification of gravesites — and we&apos;ll keep you updated with photos from each visit.
         </p>
 
         <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4">

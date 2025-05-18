@@ -18,29 +18,30 @@ type Step = {
 const steps: Step[] = [
   {
     icon: <ClipboardList className="w-8 h-8 text-brand-primary" />,
-    title: "1. Choose a Care Plan",
+    title: "1. Choose Your Plan",
     description:
-      "Select a once-off or subscription package that suits your needs.",
+      "Select the care option that works best for you—either a once-off service or ongoing care.",
   },
   {
     icon: <MapPin className="w-8 h-8 text-brand-primary" />,
-    title: "2. Tell Us the Location",
+    title: "2. Provide Grave Details",
     description:
-      "Share the cemetery and grave details of your loved one. We serve sites across South Africa.",
+      "Tell us the cemetery location and specifics of your loved one's resting place—we cover cemeteries throughout South Africa.",
   },
   {
     icon: <HeartHandshake className="w-8 h-8 text-brand-primary" />,
-    title: "3. We Handle Everything",
+    title: "3. Leave It to Us",
     description:
-      "Our team schedules the visit, cleans and maintains the site, and treats it with care, dignity, and respect.",
+      "Our caring team schedules and completes the service with respect and attention to detail, ensuring your loved one's grave is beautifully maintained.",
   },
   {
     icon: <Camera className="w-8 h-8 text-brand-primary" />,
-    title: "4. Get Visit Updates",
+    title: "4. Receive Photo Updates",
     description:
-      "We send you notifications and timestamped photos after every visit, so you stay connected — no matter where you are.",
+      "Stay connected with clear, timestamped photos sent directly after each service visit—giving you peace of mind, wherever you are.",
   },
 ];
+
 
 const HowItWorks: React.FC = () => {
   return (
@@ -50,7 +51,7 @@ const HowItWorks: React.FC = () => {
           How It Works
         </h2>
         <p className="text-lg text-gray-600 mb-12">
-          Getting started is simple, and peace of mind is just a few steps away.
+          Peace of mind starts here—with just a few simple steps.
         </p>
 
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">

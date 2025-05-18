@@ -13,10 +13,10 @@ const FinalCtaBanner: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 max-w-3xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-extrabold mb-4">
-          Honour Their Memory with Ongoing Care
+          Keep Their Memory Beautifully Alive
         </h2>
         <p className="text-lg mb-6">
-          Let us help you maintain the dignity of your loved one’s resting place.
+          Let us help ensure your loved one&apos;s resting place is always cared for with dignity and respect.
         </p>
         <a
           href="#get-started-form"

@@ -73,7 +73,7 @@ const PricingPlans: React.FC = () => {
             Choose Your Care Plan
           </h2>
           <p className="text-lg text-gray-600 mb-8">
-            Transparent pricing with flexible once-off or recurring options.
+            Simple pricing with flexible once-off or recurring options.
           </p>
 
           {/* Toggle Switch */}

@@ -28,10 +28,10 @@ const HeroSection: React.FC = () => {
       {/* Content */}
       <div className="relative z-10 flex flex-col justify-center items-center h-full text-center px-6">
         <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight">
-          Care for Your Loved One&apos;s Grave, from Anywhere
+          Honor Their Memory with Compassionate Gravesite Care — Wherever You Are
         </h1>
         <p className="mt-4 text-lg sm:text-xl text-gray-200 max-w-2xl">
-          We clean, maintain, and beautify gravesites — and send you photo proof with every visit.
+          We gently clean, carefully maintain, and thoughtfully beautify your loved one&apos;s resting place — always with the utmost respect and dignity.
         </p>
 
         <button
@@ -42,7 +42,7 @@ const HeroSection: React.FC = () => {
           Get Started
         </button>
 
-        <p className="mt-3 text-sm text-gray-300">Start with a location or service type.</p>
+        <p className="mt-3 text-sm text-gray-300">Find the Right Plan to Honor Their Memory.</p>
       </div>
     </section>
   );
