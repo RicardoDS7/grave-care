@@ -1,5 +1,6 @@
 import { Mail } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
+import { FaFacebook } from 'react-icons/fa6';
 
 const Footer: React.FC = () => {
   return (
@@ -29,6 +30,16 @@ const Footer: React.FC = () => {
           >
             <FaWhatsapp className="text-2xl" />
             Chat on WhatsApp
+          </a>
+
+          <a
+            href="https://www.facebook.com/gravecare.co.za/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 hover:underline text-white rounded-full transition"
+          >
+            <FaFacebook className="text-2xl" />
+            Follow us on Facebook
           </a>
 
           <a href="mailto:support@gravecare.co.za"
