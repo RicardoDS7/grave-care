@@ -20,6 +20,7 @@ export default function Head() {
         href="/hero-background-cover.webp"
         type="image/webp"
       />
+      <link rel="canonical" href="https://gravecare.co.za/" />
 
     </>
   );
