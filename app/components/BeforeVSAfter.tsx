@@ -1,5 +1,5 @@
 "use client";
-
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import FadeInOutSection from "./FadeInOutSection";
@@ -52,7 +52,7 @@ const BeforeAfterCarousel: React.FC = () => {
         <div className="bg-gray-50 rounded-3xl shadow-md p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div className="transition-all duration-300 ease-in-out">
-              <img
+              <Image
                 src={current.beforeImg}
                 alt="Before care"
                 className="w-full h-64 object-cover rounded-2xl"
@@ -60,7 +60,7 @@ const BeforeAfterCarousel: React.FC = () => {
               <p className="text-sm italic font-bold text-gray-500 text-center mt-2">Before</p>
             </div>
             <div className="transition-all duration-300 ease-in-out">
-              <img
+              <Image
                 src={current.afterImg}
                 alt="After care"
                 className="w-full h-64 object-cover rounded-2xl"
