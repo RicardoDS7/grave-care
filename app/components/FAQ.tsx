@@ -9,21 +9,35 @@ type FAQ = {
 
 const faqs: FAQ[] = [
   {
-    question: "How often is the service done?",
-    answer: "We offer once-off, monthly, bi-weekly, or weekly plans. You choose what suits your needs.",
+    question: "How often do you clean the graves?",
+    answer:
+      "We offer once-off, monthly, bi-weekly, or weekly cleaning plans — you choose what works best for you.",
   },
   {
-    question: "Do I get proof that the grave was cleaned?",
-    answer: "Yes, we send timestamped before-and-after photos after every visit.",
+    question: "Do you send photos after cleaning?",
+    answer:
+      "Yes, we send timestamped before-and-after photos after every visit, so you always know the grave has been cared for.",
   },
   {
-    question: "Can I cancel or change my plan?",
-    answer: "Absolutely. You can manage your plan or cancel anytime from your dashboard or by contacting us.",
+    question: "Can I cancel or change my plan anytime?",
+    answer:
+      "Absolutely. You can pause, change, or cancel your plan anytime by contacting us directly.",
   },
   {
-    question: "Do you clean headstones and remove weeds?",
-    answer: "Yes, our team gently cleans headstones, trims surrounding grass, and removes any debris or weeds.",
+  question: "Do you restore or fix old or damaged headstones?",
+  answer:
+    "We offer light restoration services such as deep cleaning, stain removal, and moss or lichen treatment for weathered headstones. For more advanced repairs — like fixing cracks, re-levelling, or resetting — we can source trusted specialists for you and assist in getting quotes as part of your service request.",
   },
+  {
+    question: "What areas do you cover?",
+    answer:
+      "We currently operate in the East Rand area. If you're outside this area, please contact us to see if we can accommodate you.",
+  },
+  {
+    question: "Can I add flowers or something special?",
+    answer:
+      "Yes, we offer optional flower placements and seasonal tributes. You can include these when booking or make a special request.",
+  }
 ];
 
 const FaqSection: React.FC = () => {
