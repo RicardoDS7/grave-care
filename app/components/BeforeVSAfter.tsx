@@ -82,14 +82,14 @@ const BeforeAfterCarousel: React.FC = () => {
         <button
           onClick={prev}
           aria-label="Previous"
-          className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:border-brand-primary hover:bg-brand-primary hover:text-white transition"
+          className="cursor-pointer w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:border-brand-primary hover:bg-[color:var(--secondary)] hover:text-white transition"
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
         <button
           onClick={next}
           aria-label="Next"
-          className="w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:border-brand-primary hover:bg-brand-primary hover:text-white transition"
+          className="cursor-pointer w-10 h-10 flex items-center justify-center rounded-full border border-gray-300 hover:border-brand-primary hover:bg-[color:var(--secondary)] hover:text-white transition"
         >
           <ChevronRight className="w-5 h-5" />
         </button>
