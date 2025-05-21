@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { useEffect, useRef } from 'react';
 
 const HeroSection: React.FC = () => {
   const handleScrollToForm = () => {
@@ -10,19 +11,32 @@ const HeroSection: React.FC = () => {
     }
   };
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.play().catch((err) => {
+        // Handle autoplay prevention error (e.g., user hasn't interacted)
+        console.log("Autoplay error:", err);
+      });
+    }
+  }, []);
+
   return (
     <section
       className="relative w-full h-screen overflow-hidden"
       style={{ backgroundImage: `url('/hero-background-cover.webp')`, backgroundSize: 'cover', backgroundPosition: 'center' }}
     >
       <video
+        ref={videoRef}
         className="absolute top-0 left-0 w-full h-full object-cover"
         src={`/gravecare-background.webm`}
         autoPlay
         muted
         loop
         playsInline
-        preload="none"
+        preload="auto"
       />
       {/* Overlay for contrast */}
       <div className="absolute inset-0 bg-black/50" />
