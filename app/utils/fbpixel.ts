@@ -1,24 +1,29 @@
-declare global {
-  interface Window {
-    fbq: (
-      command: 'track' | 'trackCustom' | 'init',
-      eventNameOrPixelId: string,
-      parameters?: Record<string, unknown>
-    ) => void;
-  }
-}
+// fbq.ts
 
+type FbqFunction = {
+  (...args: unknown[]): void;
+  callMethod?: (...args: unknown[]) => void;
+  queue?: unknown[];
+  loaded?: boolean;
+  version?: string;
+  push?: (...args: unknown[]) => void;
+};
+
+// Safe wrapper to call fbq
 export const fbq = (
   command: 'track' | 'trackCustom' | 'init',
   eventNameOrPixelId: string,
   parameters?: Record<string, unknown>
 ): void => {
-  if (typeof window !== 'undefined' && typeof window.fbq !== 'undefined') {
+  if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
     window.fbq(command, eventNameOrPixelId, parameters);
   }
 };
 
-export const trackPageView = () => fbq('track', 'PageView');
-export const trackLead = () => fbq('track', 'Lead');
-export const trackCustom = (eventName: string, data?: Record<string, unknown>) =>
-  fbq('trackCustom', eventName, data);
+// Common shortcuts
+export const trackPageView = (): void => fbq('track', 'PageView');
+export const trackLead = (): void => fbq('track', 'Lead');
+export const trackCustom = (
+  eventName: string,
+  data?: Record<string, unknown>
+): void => fbq('trackCustom', eventName, data);

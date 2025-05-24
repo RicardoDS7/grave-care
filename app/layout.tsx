@@ -3,6 +3,7 @@ import ClientHeader from "./components/ClientHeader";
 import { Metadata } from "next";
 import { Inter } from 'next/font/google';
 import { Playfair_Display } from 'next/font/google';
+import MetaPixel from "./components/MetaPixel";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans bg-brand-background text-brand-foreground">
         <ClientHeader />
+        <MetaPixel />
         {children}
       </body>
     </html>
