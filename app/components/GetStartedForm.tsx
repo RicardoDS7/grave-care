@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import emailjs from 'emailjs-com';
+import { trackLead } from '../utils/fbpixel';
 
 export default function GetStartedForm() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -69,13 +70,18 @@ export default function GetStartedForm() {
           (result) => {
             console.log('Success:', result.text);
             alert('Form submitted successfully!');
+
+            trackLead(); // ✅ Fire Meta Pixel Lead event
+
             resetForm(); // ✅ Clear the form
+            
           },
           (error) => {
             console.log('Error:', error.text);
             alert('There was an error sending your message.');
           }
         );
+
     };
 
 
