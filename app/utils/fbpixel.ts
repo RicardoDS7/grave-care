@@ -1,13 +1,4 @@
-// fbq.ts
-
-type FbqFunction = {
-  (...args: unknown[]): void;
-  callMethod?: (...args: unknown[]) => void;
-  queue?: unknown[];
-  loaded?: boolean;
-  version?: string;
-  push?: (...args: unknown[]) => void;
-};
+// fbpixel.ts
 
 // Safe wrapper to call fbq
 export const fbq = (
