@@ -1,17 +1,24 @@
 declare global {
   interface Window {
-    fbq: (...args: any[]) => void;
+    fbq: (
+      command: 'track' | 'trackCustom' | 'init',
+      eventNameOrPixelId: string,
+      parameters?: Record<string, unknown>
+    ) => void;
   }
 }
 
-export const fbq = (...args: any[]) => {
+export const fbq = (
+  command: 'track' | 'trackCustom' | 'init',
+  eventNameOrPixelId: string,
+  parameters?: Record<string, unknown>
+): void => {
   if (typeof window !== 'undefined' && typeof window.fbq !== 'undefined') {
-    window.fbq(...args);
+    window.fbq(command, eventNameOrPixelId, parameters);
   }
 };
 
-// Examples
 export const trackPageView = () => fbq('track', 'PageView');
 export const trackLead = () => fbq('track', 'Lead');
-export const trackCustom = (eventName: string, data?: object) =>
+export const trackCustom = (eventName: string, data?: Record<string, unknown>) =>
   fbq('trackCustom', eventName, data);
