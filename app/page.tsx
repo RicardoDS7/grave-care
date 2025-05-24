@@ -9,9 +9,9 @@ import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import { trackPageView } from "./utils/fbpixel";
 
-const TestimonialsCarousel = dynamic(() => import("./components/Testimonials"), {ssr: false});
+// const TestimonialsCarousel = dynamic(() => import("./components/Testimonials"), {ssr: false});
 
-const BeforeAfterGallery = dynamic(() => import("./components/BeforeVSAfter"), {ssr: false});
+// const BeforeAfterGallery = dynamic(() => import("./components/BeforeVSAfter"), {ssr: false});
 
 const FaqSection = dynamic(() => import("./components/FAQ"), {ssr: false});
 
@@ -37,9 +37,9 @@ export default function Home() {
 
       <HowItWorks />
 
-      <BeforeAfterGallery />
+      {/* <BeforeAfterGallery />
 
-      <TestimonialsCarousel />
+      <TestimonialsCarousel /> */}
 
       <ServiceAreas />
 
