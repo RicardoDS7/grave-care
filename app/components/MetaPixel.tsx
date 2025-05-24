@@ -4,24 +4,38 @@ import { useEffect } from 'react';
 
 declare global {
   interface Window {
-    fbq?: (...args: any[]) => void;
+    fbq?: FbqFunction;
     _fbq?: unknown;
   }
 }
 
+type FbqFunction = {
+  (...args: unknown[]): void;
+  callMethod?: (...args: unknown[]) => void;
+  queue: unknown[];
+  loaded: boolean;
+  version: string;
+  push: (...args: unknown[]) => void;
+};
+
 export default function MetaPixel() {
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    if (window.fbq) return;
+    if (typeof window === 'undefined' || window.fbq) return;
 
-    (function (f: any, b: Document, e: string, v: string) {
-      const n: any = function (...args: unknown[]) {
+    (function (
+      f: Window & { fbq?: FbqFunction; _fbq?: unknown },
+      b: Document,
+      e: string,
+      v: string
+    ) {
+      const n: FbqFunction = function (...args: unknown[]) {
         if (n.callMethod) {
           n.callMethod(...args);
         } else {
           n.queue.push(args);
         }
-      };
+      } as FbqFunction;
+
       if (!f._fbq) f._fbq = n;
       n.push = n;
       n.loaded = true;
@@ -29,7 +43,7 @@ export default function MetaPixel() {
       n.queue = [];
       f.fbq = n;
 
-      const t = b.createElement(e) as HTMLScriptElement; // Cast to HTMLScriptElement
+      const t = b.createElement(e) as HTMLScriptElement;
       t.async = true;
       t.src = v;
       const s = b.getElementsByTagName(e)[0];

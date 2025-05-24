@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 type GalleryItem = {
@@ -26,14 +26,22 @@ const BeforeAfterCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const total = galleryItems.length;
 
-  const next = () => setCurrentIndex((prev) => (prev + 1) % total);
-  const prev = () => setCurrentIndex((prev) => (prev - 1 + total) % total);
+  const next = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % total);
+  }, [total]);
+
+  const prev = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + total) % total);
+  }, [total]);
+
+
 
   // Optional: Auto-rotate every 8 seconds
   useEffect(() => {
     const timer = setInterval(next, 8000);
     return () => clearInterval(timer);
-  }, []);
+  }, [next]);
+
 
   const current = galleryItems[currentIndex];
 
