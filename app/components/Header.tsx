@@ -54,9 +54,9 @@ export default function Header() {
 
         {/* Nav Items */}
         <nav className="flex flex-col px-6 py-6 space-y-6 text-gray-700 text-lg">
-          {/* <a href="#how-it-works" onClick={() => setIsOpen(false)}>How It Works</a> */}
+          <a href="#how-it-works" onClick={() => setIsOpen(false)}>How It Works</a>
           <a href="#services" onClick={() => setIsOpen(false)}>Pricing & Services</a>
-          <a href="#gallery" onClick={() => setIsOpen(false)}>Before & After</a>
+          {/* <a href="#gallery" onClick={() => setIsOpen(false)}>Before & After</a> */}
           <a
             href="#get-started-form"
             className="mt-4 bg-brand-primary text-white text-center font-medium px-4 py-2 rounded-full hover:bg-green-700 transition"
