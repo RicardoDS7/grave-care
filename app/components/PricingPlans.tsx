@@ -23,13 +23,13 @@ const plans: Plan[] = [
       "Weed removal",
       "Deep tombstone cleaning",
       "Before & after photo updates",
-      "Perfect for maintaining dignity on a budget",
     ],
     featuresOnceOff: [
-      "One-time cleaning",
+      "One-time professional cleaning",
       "Lawn edging and light trimming",
       "Weed removal",
       "Deep tombstone cleaning",
+      "Before & after photo updates",
     ],
   },
   {
@@ -45,7 +45,8 @@ const plans: Plan[] = [
       "Free anniversary tribute",
     ],
     featuresOnceOff: [
-      "Seasonal fresh flower placement valued at R250/month",
+      "One-time professional cleaning",
+      "Seasonal fresh flower placement valued at R250",
       "Deep tombstone cleaning",
       "Weed clearing and grass trimming",
       "Before & after photo updates",
@@ -65,7 +66,8 @@ const plans: Plan[] = [
       "Free anniversary tribute",
     ],
     featuresOnceOff: [
-      "Premium flower arrangements with vases replaced if damaged valued at R500/month",
+      "One-time professional cleaning",
+      "Premium flower arrangements with vases replaced if damaged valued at R500",
       "Expert tombstone restoration",
       "Headstone lettering touch-up as needed",
       "Gravel top-up or reset",
