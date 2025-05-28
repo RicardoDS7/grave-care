@@ -88,7 +88,7 @@ export default function GetStartedForm() {
   const plans = [
     { name: 'Basic Care', priceMonthly: 179, priceOnceOff: 249, description: '' },
     { name: 'Standard Care', priceMonthly: 579, priceOnceOff: 649, description: '' },
-    { name: 'Premium Care', priceMonthly: 999, priceOnceOff: 1499, description: '' },
+    { name: 'Premium Care', priceMonthly: 999, priceOnceOff: 1249, description: '' },
   ];
 
   return (
