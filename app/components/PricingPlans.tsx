@@ -4,27 +4,62 @@ import React, { useState } from "react";
 import { handleScrollToForm } from "../utils/handleScrollToForm";
 import FadeInOutSection from "./FadeInOutSection";
 
-type Plan = {
+type MonthlyPlan = {
   name: string;
-  priceMonthly?: number;
-  priceOnceOff: number;
-  featuresMonthly: string[];
-  featuresOnceOff: string[];
+  price: number;
+  features: string[];
 };
 
-const plans: Plan[] = [
+type OnceOffPlan = {
+  name: string;
+  price: number;
+  features: string[];
+};
+
+const monthlyPlans: MonthlyPlan[] = [
   {
     name: "Basic",
-    priceMonthly: 179,
-    priceOnceOff: 249,
-    featuresMonthly: [
+    price: 179,
+    features: [
       "Monthly cleaning",
       "Lawn edging and light trimming",
       "Weed removal",
       "Deep tombstone cleaning",
       "Before & after photo updates",
     ],
-    featuresOnceOff: [
+  },
+  {
+    name: "Standard",
+    price: 299,
+    features: [
+      "Monthly cleaning",
+      "Seasonal fresh flower replacement valued at R150",
+      "Deep tombstone cleaning",
+      "Weed clearing and grass trimming",
+      "Before & after photo updates",
+      "Free anniversary tribute",
+    ],
+  },
+  {
+    name: "Family",
+    price: 499,
+    features: [
+      "Monthly cleaning for two graves at the same cemetery",
+      "R149/month for each additional grave",
+      "Seasonal fresh flower replacement for each grave",
+      "Deep tombstone cleaning",
+      "Weed clearing and grass trimming",
+      "Before & after photo updates",
+      "Free anniversary tribute",
+    ],
+  },
+];
+
+const onceOffPlans: OnceOffPlan[] = [
+  {
+    name: "Basic",
+    price: 249,
+    features: [
       "One-time professional cleaning",
       "Lawn edging and light trimming",
       "Weed removal",
@@ -34,38 +69,19 @@ const plans: Plan[] = [
   },
   {
     name: "Standard",
-    priceMonthly: 579,
-    priceOnceOff: 699,
-    featuresMonthly: [
-      "Bi-weekly maintenance",
-      "Seasonal fresh flower placement valued at R250/month",
-      "Deep tombstone cleaning",
-      "Weed clearing and grass trimming",
-      "Before & after photo updates",
-      "Free anniversary tribute",
-    ],
-    featuresOnceOff: [
+    price: 399,
+    features: [
       "One-time professional cleaning",
-      "Seasonal fresh flower placement valued at R250",
+      "Seasonal fresh flower placement valued at R150",
       "Deep tombstone cleaning",
       "Weed clearing and grass trimming",
       "Before & after photo updates",
     ],
   },
   {
-    name: "Premium",
-    priceMonthly: 999,
-    priceOnceOff: 1249,
-    featuresMonthly: [
-      "Weekly professional maintenance",
-      "Premium flower arrangements with vases replaced if damaged valued at R500/month",
-      "Expert tombstone restoration",
-      "Headstone lettering touch-up as needed",
-      "Gravel top-up or reset",
-      "Before & after photo set",
-      "Free anniversary tribute",
-    ],
-    featuresOnceOff: [
+    name: "Family",
+    price: 1249,
+    features: [
       "One-time professional cleaning",
       "Premium flower arrangements with vases replaced if damaged valued at R500",
       "Expert tombstone restoration",
@@ -75,6 +91,11 @@ const plans: Plan[] = [
     ],
   },
 ];
+
+// Helper function to get the current plans based on subscription type
+const getCurrentPlans = (isSubscription: boolean) => {
+  return isSubscription ? monthlyPlans : onceOffPlans;
+};
 
 const PricingPlans: React.FC = () => {
   const [isSubscription, setIsSubscription] = useState(true);
@@ -116,7 +137,7 @@ const PricingPlans: React.FC = () => {
 
           {/* Pricing Cards */}
           <div className="grid gap-8 md:grid-cols-3 items-stretch">
-            {plans.map((plan) => (
+            {getCurrentPlans(isSubscription).map((plan) => (
               <div
                 key={plan.name}
                 className="flex flex-col bg-gray-50 rounded-3xl shadow-sm p-6 text-left border hover:shadow-md transition"
@@ -129,23 +150,35 @@ const PricingPlans: React.FC = () => {
                     isSubscription ? "text-[color:var(--primary)]" : "text-[color:var(--primary)]"
                   }`}
                 >
-                  R{isSubscription ? plan.priceMonthly : plan.priceOnceOff}
+                  R{plan.price}
                   <span className="text-sm font-medium text-gray-500">
                     {isSubscription ? "/mo" : " once-off"}
                   </span>
                 </p>
 
-                <ul className="text-sm text-gray-700 space-y-2 mb-6">
-                  {(isSubscription ? plan.featuresMonthly : plan.featuresOnceOff).map((feature, idx) => (
-                    <li key={idx}>✓ {feature}</li>
+                <ul className="text-sm text-gray-700 space-y-3 mb-6">
+                  {plan.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <svg 
+                        className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" 
+                        fill="currentColor" 
+                        viewBox="0 0 20 20"
+                      >
+                        <path 
+                          fillRule="evenodd" 
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" 
+                          clipRule="evenodd" 
+                        />
+                      </svg>
+                      <span className="leading-relaxed">{feature}</span>
+                    </li>
                   ))}
                 </ul>
 
                 <button
                   type="button"
                   onClick={handleScrollToForm}
-                  className={`mt-auto w-full cursor-pointer text-white py-2 px-4 rounded-full font-medium transition bg-[color:var(--primary)] hover:bg-[color:var(--secondary)]`
-                  }
+                  className="mt-auto w-full cursor-pointer text-white py-2 px-4 rounded-full font-medium transition bg-[color:var(--primary)] hover:bg-[color:var(--secondary)]"
                 >
                   {isSubscription ? "Subscribe Now" : "Book Now"}
                 </button>
