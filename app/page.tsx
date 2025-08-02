@@ -7,7 +7,7 @@ import FinalCtaBanner from "./components/CTA";
 import Footer from "./components/Footer";
 import dynamic from "next/dynamic";
 import { useEffect } from "react";
-import { trackPageView } from "./utils/fbpixel";
+import { trackViewContent } from "./utils/fbpixel";
 
 // const TestimonialsCarousel = dynamic(() => import("./components/Testimonials"), {ssr: false});
 
@@ -23,7 +23,7 @@ const GetStartedForm = dynamic(() => import("./components/GetStartedForm"), { ss
 export default function Home() {
 
   useEffect(() => {
-    trackPageView();
+    trackViewContent();
   }, []);
 
   return (

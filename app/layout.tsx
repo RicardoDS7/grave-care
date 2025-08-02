@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body className="font-sans bg-brand-background text-brand-foreground">
         <ClientHeader />
-        <MetaPixel />
+        <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID!}/>
         {children}
       </body>
     </html>
