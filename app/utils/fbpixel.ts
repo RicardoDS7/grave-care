@@ -1,19 +1,6 @@
 // utils/fbpixel.ts - Utility functions for tracking events
-import type { MetaPixelParameters } from '../types/fbpixel';
-
-// Use the same fbq declaration as MetaPixel.tsx
-declare global {
-  interface Window {
-    fbq: {
-      (...args: any[]): void;
-      callMethod?: (...args: any[]) => void;
-      queue?: any[];
-      push?: any;
-      loaded?: boolean;
-      version?: string;
-    };
-  }
-}
+import type { MetaPixelParameters } from "../types/fbpixel";
+// Import the types file to ensure global declaration is loaded
 
 export const trackEvent = (eventName: string, parameters?: MetaPixelParameters) => {
   if (typeof window !== 'undefined' && window.fbq) {

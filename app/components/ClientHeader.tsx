@@ -2,9 +2,18 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import MetaPixel from "./MetaPixel";
+import { Suspense } from 'react';
 
 const Header = dynamic(() => import("./Header"), { ssr: false });
 
+
 export default function ClientHeader() {
-  return <Header />;
+
+  return <>
+    <Suspense fallback={null}>
+      <Header />
+      <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID!} />
+    </Suspense>
+      </>;
 }

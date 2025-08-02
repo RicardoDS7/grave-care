@@ -1,4 +1,4 @@
-// components/MetaPixel.tsx
+// components/MetaPixel.tsx (updated)
 'use client';
 
 import { useEffect } from 'react';
@@ -8,17 +8,22 @@ interface MetaPixelProps {
   pixelId: string;
 }
 
+// Define proper types for Meta Pixel
+type FbqArgs = [string, ...unknown[]];
+
+interface FbqFunction {
+  (...args: FbqArgs): void;
+  callMethod?: (...args: FbqArgs) => void;
+  queue?: FbqArgs[];
+  push?: FbqFunction;
+  loaded?: boolean;
+  version?: string;
+}
+
 // Declare fbq function globally with proper typing
 declare global {
   interface Window {
-    fbq: {
-      (...args: any[]): void;
-      callMethod?: (...args: any[]) => void;
-      queue?: any[];
-      push?: any;
-      loaded?: boolean;
-      version?: string;
-    };
+    fbq: FbqFunction;
   }
 }
 
@@ -35,19 +40,21 @@ export default function MetaPixel({ pixelId }: MetaPixelProps) {
       script.src = 'https://connect.facebook.net/en_US/fbevents.js';
       document.head.appendChild(script);
 
-      // Initialize fbq function
-      window.fbq = function(...args: any[]) {
-        if (window.fbq.callMethod) {
-          window.fbq.callMethod(...args);
+      // Initialize fbq function with proper typing
+      const fbqFunction: FbqFunction = function(...args: FbqArgs): void {
+        if (fbqFunction.callMethod) {
+          fbqFunction.callMethod(...args);
         } else {
-          window.fbq.queue?.push(args);
+          fbqFunction.queue?.push(args);
         }
-      } as any;
+      };
       
-      window.fbq.push = window.fbq;
-      window.fbq.loaded = true;
-      window.fbq.version = '2.0';
-      window.fbq.queue = [];
+      fbqFunction.push = fbqFunction;
+      fbqFunction.loaded = true;
+      fbqFunction.version = '2.0';
+      fbqFunction.queue = [];
+
+      window.fbq = fbqFunction;
 
       // Initialize the pixel
       window.fbq('init', pixelId);
