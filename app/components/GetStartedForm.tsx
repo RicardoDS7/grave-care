@@ -77,8 +77,14 @@ export default function GetStartedForm() {
       );
   };
 
+  type Plan = {
+    name: string;
+    price: number;
+    features: string[];
+  };
+
   // Monthly plans data
-  const monthlyPlans = [
+  const monthlyPlans:Plan[] = [
   {
     name: "Basic Care",
     price: 179,
@@ -117,7 +123,7 @@ export default function GetStartedForm() {
   },
 ];
 
-const onceOffPlans = [
+const onceOffPlans:Plan[] = [
   {
     name: "Basic Care",
     price: 249,
@@ -161,7 +167,7 @@ const onceOffPlans = [
     return []; // Show no plans if no frequency selected
   };
 
-  const getDisplayPrice = (plan: any) => {
+  const getDisplayPrice = (plan: Plan) => {
     if (form.frequency === 'monthly') {
       return `R${plan.price}/mo`;
     } else if (form.frequency === 'once-off') {
