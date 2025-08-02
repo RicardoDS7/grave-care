@@ -42,11 +42,11 @@ const Footer: React.FC = () => {
             Follow us on Facebook
           </a>
 
-          <a href="mailto:support@gravecare.co.za"
+          {/* <a href="mailto:support@gravecare.co.za"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-white rounded-full hover:underline transition">
-              <Mail className="text-lg"/>support@gravecare.co.za</a>
+              <Mail className="text-lg"/>support@gravecare.co.za</a> */}
           </div>
         </div>
       </div>
