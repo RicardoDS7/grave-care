@@ -97,7 +97,7 @@ export default function GetStartedForm() {
     ],
   },
   {
-    name: "Standard Care",
+    name: "Premium Care",
     price: 299,
     features: [
       "Monthly cleaning",
@@ -136,7 +136,7 @@ const onceOffPlans:Plan[] = [
     ],
   },
   {
-    name: "Standard Care",
+    name: "Premium Care",
     price: 399,
     features: [
       "One-time professional cleaning",

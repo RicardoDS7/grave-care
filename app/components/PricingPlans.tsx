@@ -18,7 +18,7 @@ type OnceOffPlan = {
 
 const monthlyPlans: MonthlyPlan[] = [
   {
-    name: "Basic",
+    name: "Basic Care",
     price: 179,
     features: [
       "Monthly cleaning",
@@ -29,7 +29,7 @@ const monthlyPlans: MonthlyPlan[] = [
     ],
   },
   {
-    name: "Premium",
+    name: "Premium Care",
     price: 299,
     features: [
       "Monthly cleaning",
@@ -41,7 +41,7 @@ const monthlyPlans: MonthlyPlan[] = [
     ],
   },
   {
-    name: "Family",
+    name: "Family Care",
     price: 499,
     features: [
       "Monthly cleaning for two graves at the same cemetery",
