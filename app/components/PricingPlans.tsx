@@ -29,7 +29,7 @@ const monthlyPlans: MonthlyPlan[] = [
     ],
   },
   {
-    name: "Standard",
+    name: "Premium",
     price: 299,
     features: [
       "Monthly cleaning",
@@ -45,7 +45,7 @@ const monthlyPlans: MonthlyPlan[] = [
     price: 499,
     features: [
       "Monthly cleaning for two graves at the same cemetery",
-      "R149/month for each additional grave",
+      "+R149/month for each additional grave",
       "Seasonal fresh flower replacement for each grave",
       "Deep tombstone cleaning",
       "Weed clearing and grass trimming",
@@ -57,7 +57,7 @@ const monthlyPlans: MonthlyPlan[] = [
 
 const onceOffPlans: OnceOffPlan[] = [
   {
-    name: "Basic",
+    name: "Basic Care",
     price: 249,
     features: [
       "One-time professional cleaning",
@@ -68,7 +68,7 @@ const onceOffPlans: OnceOffPlan[] = [
     ],
   },
   {
-    name: "Standard",
+    name: "Premium Care",
     price: 399,
     features: [
       "One-time professional cleaning",
@@ -79,7 +79,7 @@ const onceOffPlans: OnceOffPlan[] = [
     ],
   },
   {
-    name: "Family",
+    name: "Full Restoration",
     price: 1249,
     features: [
       "One-time professional cleaning",
@@ -143,7 +143,7 @@ const PricingPlans: React.FC = () => {
                 className="flex flex-col bg-gray-50 rounded-3xl shadow-sm p-6 text-left border hover:shadow-md transition"
               >
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                  {plan.name} Care
+                  {plan.name}
                 </h3>
                 <p
                   className={`text-3xl font-bold mb-4 ${
