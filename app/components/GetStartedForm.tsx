@@ -1,12 +1,14 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import emailjs from 'emailjs-com';
 import { trackLead } from '../utils/fbpixel';
+import { trackLeadFormSubmit, trackFormStart, trackPlanSelection, trackFrequencySelection } from '../utils/gtm';
 
 export default function GetStartedForm() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const [hasTrackedFormStart, setHasTrackedFormStart] = useState(false);
 
   const [form, setForm] = useState({
     firstName: '',
@@ -18,6 +20,14 @@ export default function GetStartedForm() {
     plan: '',
     frequency: '',
   });
+
+  // Track form start when user begins interacting
+  useEffect(() => {
+    if (!hasTrackedFormStart && (form.firstName || form.lastName || form.email)) {
+      trackFormStart();
+      setHasTrackedFormStart(true);
+    }
+  }, [form.firstName, form.lastName, form.email, hasTrackedFormStart]);
 
   const resetForm = () => {
     setForm({
@@ -31,10 +41,26 @@ export default function GetStartedForm() {
       frequency: '',
     });
     recaptchaRef.current?.reset();
+    setHasTrackedFormStart(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleFrequencyChange = (frequency: string) => {
+    setForm({ ...form, frequency, plan: '' });
+    trackFrequencySelection(frequency);
+  };
+
+  const handlePlanSelection = (planName: string) => {
+    setForm({ ...form, plan: planName });
+    
+    // Get plan details for tracking
+    const selectedPlan = getCurrentPlans().find(p => p.name === planName);
+    if (selectedPlan) {
+      trackPlanSelection(planName, form.frequency, selectedPlan.price);
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -56,6 +82,10 @@ export default function GetStartedForm() {
       return;
     }
 
+    // Get plan details for conversion tracking
+    const selectedPlan = getCurrentPlans().find(p => p.name === form.plan);
+    const planValue = selectedPlan ? selectedPlan.price : 0;
+
     emailjs
       .sendForm(
         'service_hng0fk9',
@@ -67,7 +97,21 @@ export default function GetStartedForm() {
         (result) => {
           console.log('Success:', result.text);
           alert('Form submitted successfully!');
-          trackLead();
+          
+          // Track conversions
+          trackLead(); // Meta Pixel
+          
+          // GTM conversion tracking
+          trackLeadFormSubmit({
+            plan: form.plan,
+            frequency: form.frequency,
+            value: planValue,
+            currency: 'ZAR',
+            email: form.email,
+            firstName: form.firstName,
+            lastName: form.lastName,
+          });
+          
           resetForm();
         },
         (error) => {
@@ -84,81 +128,81 @@ export default function GetStartedForm() {
   };
 
   // Monthly plans data
-  const monthlyPlans:Plan[] = [
-  {
-    name: "Basic Care",
-    price: 179,
-    features: [
-      "Monthly cleaning",
-      "Lawn edging and light trimming",
-      "Weed removal",
-      "Deep tombstone cleaning",
-      "Before & after photo updates",
-    ],
-  },
-  {
-    name: "Premium Care",
-    price: 299,
-    features: [
-      "Monthly cleaning",
-      "Seasonal fresh flower replacement valued at R150",
-      "Deep tombstone cleaning",
-      "Weed clearing and grass trimming",
-      "Before & after photo updates",
-      "Free anniversary tribute",
-    ],
-  },
-  {
-    name: "Family Care",
-    price: 499,
-    features: [
-      "Monthly cleaning for two graves at the same cemetery",
-      "+R149/month for each additional grave",
-      "Seasonal fresh flower replacement for each grave",
-      "Deep tombstone cleaning",
-      "Weed clearing and grass trimming",
-      "Before & after photo updates",
-      "Free anniversary tribute",
-    ],
-  },
-];
+  const monthlyPlans: Plan[] = [
+    {
+      name: "Basic Care",
+      price: 179,
+      features: [
+        "Monthly cleaning",
+        "Lawn edging and light trimming",
+        "Weed removal",
+        "Deep tombstone cleaning",
+        "Before & after photo updates",
+      ],
+    },
+    {
+      name: "Premium Care",
+      price: 299,
+      features: [
+        "Monthly cleaning",
+        "Seasonal fresh flower replacement valued at R150",
+        "Deep tombstone cleaning",
+        "Weed clearing and grass trimming",
+        "Before & after photo updates",
+        "Free anniversary tribute",
+      ],
+    },
+    {
+      name: "Family Care",
+      price: 499,
+      features: [
+        "Monthly cleaning for two graves at the same cemetery",
+        "+R149/month for each additional grave",
+        "Seasonal fresh flower replacement for each grave",
+        "Deep tombstone cleaning",
+        "Weed clearing and grass trimming",
+        "Before & after photo updates",
+        "Free anniversary tribute",
+      ],
+    },
+  ];
 
-const onceOffPlans:Plan[] = [
-  {
-    name: "Basic Care",
-    price: 249,
-    features: [
-      "One-time professional cleaning",
-      "Lawn edging and light trimming",
-      "Weed removal",
-      "Deep tombstone cleaning",
-      "Before & after photo set",
-    ],
-  },
-  {
-    name: "Premium Care",
-    price: 399,
-    features: [
-      "One-time professional cleaning",
-      "Seasonal fresh flower placement valued at R150",
-      "Deep tombstone cleaning",
-      "Weed clearing and grass trimming",
-      "Before & after photo set",
-    ],
-  },
-  {
-    name: "Full Restoration",
-    price: 899,
-    features: [
-      "One-time professional cleaning",
-      "Seasonal fresh flower placement with vases replaced if damaged",
-      "Tombstone and headstone expertly restored",
-      "Lettering re-engraved or touched up for clarity",
-      "Gravel top-up and ground leveling",
-      "Before & after photo set",
-    ],
-  },
-];
+  const onceOffPlans: Plan[] = [
+    {
+      name: "Basic Care",
+      price: 249,
+      features: [
+        "One-time professional cleaning",
+        "Lawn edging and light trimming",
+        "Weed removal",
+        "Deep tombstone cleaning",
+        "Before & after photo set",
+      ],
+    },
+    {
+      name: "Premium Care",
+      price: 399,
+      features: [
+        "One-time professional cleaning",
+        "Seasonal fresh flower placement valued at R150",
+        "Deep tombstone cleaning",
+        "Weed clearing and grass trimming",
+        "Before & after photo set",
+      ],
+    },
+    {
+      name: "Full Restoration",
+      price: 899,
+      features: [
+        "One-time professional cleaning",
+        "Seasonal fresh flower placement with vases replaced if damaged",
+        "Tombstone and headstone expertly restored",
+        "Lettering re-engraved or touched up for clarity",
+        "Gravel top-up and ground leveling",
+        "Before & after photo set",
+      ],
+    },
+  ];
 
   // Get current plans based on frequency selection
   const getCurrentPlans = () => {
@@ -208,7 +252,7 @@ const onceOffPlans:Plan[] = [
                 <button
                   key={freq.value}
                   type="button"
-                  onClick={() => setForm({ ...form, frequency: freq.value, plan: '' })} // Clear plan when frequency changes
+                  onClick={() => handleFrequencyChange(freq.value)}
                   className={`flex-1 min-w-[200px] p-4 rounded-xl border-2 transition-all duration-200 text-left cursor-pointer ${
                     form.frequency === freq.value
                       ? "border-[color:var(--primary)] bg-[color:var(--primary)]/10 shadow-md"
@@ -245,7 +289,7 @@ const onceOffPlans:Plan[] = [
                 {getCurrentPlans().map((plan) => (
                   <div
                     key={plan.name}
-                    onClick={() => setForm({ ...form, plan: plan.name })}
+                    onClick={() => handlePlanSelection(plan.name)}
                     className={`relative p-6 rounded-xl border-2 transition-all duration-200 cursor-pointer group ${
                       form.plan === plan.name
                         ? "border-[color:var(--primary)] bg-[color:var(--primary)]/5 shadow-lg transform scale-105"
