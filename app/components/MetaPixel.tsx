@@ -1,4 +1,4 @@
-// components/MetaPixel.tsx (updated)
+// components/MetaPixel.tsx (fixed)
 'use client';
 
 import { useEffect } from 'react';
@@ -24,6 +24,7 @@ interface FbqFunction {
 declare global {
   interface Window {
     fbq: FbqFunction;
+    _fbq_initialized?: boolean; // Add flag to track initialization
   }
 }
 
@@ -32,8 +33,10 @@ export default function MetaPixel({ pixelId }: MetaPixelProps) {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    // Initialize Meta Pixel only if it doesn't exist
-    if (typeof window.fbq === 'undefined') {
+    // Only initialize Meta Pixel once per session
+    if (typeof window.fbq === 'undefined' && !window._fbq_initialized) {
+      window._fbq_initialized = true;
+
       // Load Facebook Pixel script
       const script = document.createElement('script');
       script.async = true;
@@ -59,13 +62,16 @@ export default function MetaPixel({ pixelId }: MetaPixelProps) {
       // Initialize the pixel
       window.fbq('init', pixelId);
       window.fbq('track', 'PageView');
+
+      console.log('Meta Pixel initialized with ID:', pixelId);
     }
-  }, [pixelId]);
+  }, []); // Remove pixelId from dependencies to prevent re-initialization
 
   useEffect(() => {
-    // Track page views on route changes
-    if (typeof window.fbq !== 'undefined') {
+    // Track page views on route changes (but don't re-initialize)
+    if (typeof window.fbq !== 'undefined' && window.fbq.loaded) {
       window.fbq('track', 'PageView');
+      console.log('Meta Pixel: PageView tracked for', pathname);
     }
   }, [pathname, searchParams]);
 
