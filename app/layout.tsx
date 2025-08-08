@@ -1,5 +1,6 @@
 import "./globals.css";
 import ClientHeader from "./components/ClientHeader";
+import GoogleTagManager from "./components/GoogleTagManager";
 import { Metadata } from "next";
 import { Inter } from 'next/font/google';
 import { Playfair_Display } from 'next/font/google';
@@ -27,11 +28,23 @@ export const metadata: Metadata = {
   },
 };
 
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
+      </head>
       <body className="font-sans bg-brand-background text-brand-foreground">
+        {/* GTM NoScript - must be immediately after opening body tag */}
+        <noscript>
+          <iframe 
+            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+            height="0" 
+            width="0" 
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        
         <ClientHeader />
         {children}
       </body>
