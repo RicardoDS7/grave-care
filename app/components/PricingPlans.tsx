@@ -104,9 +104,10 @@ const PricingPlans: React.FC = () => {
     <FadeInOutSection>
       <section id="pricing" className="bg-white py-20 px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-slate-800 mb-6 leading-tight">
             Choose Your Care Plan
           </h2>
+          <div className="w-16 h-px bg-slate-300 mx-auto mb-8"></div>
           <p className="text-lg text-gray-600 mb-8">
             Simple pricing with flexible once-off or recurring options.
           </p>

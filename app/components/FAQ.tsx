@@ -50,9 +50,10 @@ const FaqSection: React.FC = () => {
   return (
     <section id="faq" className="bg-white py-20 px-6">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-6">
-          Frequently Asked Questions
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-slate-800 mb-6 leading-tight">
+            Frequently Asked Questions
         </h2>
+        <div className="w-16 h-px bg-slate-300 mx-auto mb-8"></div>
 
         <div className="space-y-4 text-left">
           {faqs.map((faq, index) => (
