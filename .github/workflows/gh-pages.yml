@@ -29,6 +29,8 @@ jobs:
           NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY }}
           NEXT_PUBLIC_META_PIXEL_ID: ${{ secrets.NEXT_PUBLIC_META_PIXEL_ID }}
           NEXT_PUBLIC_GTM_ID: ${{ secrets.NEXT_PUBLIC_GTM_ID }}
+          NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID }}
+          NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL: ${{ secrets.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL }}
 
       - name: Add CNAME for custom domain
         run: echo www.gravecare.co.za > out/CNAME

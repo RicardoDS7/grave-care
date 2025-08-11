@@ -1,77 +1,57 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import FadeInOutSection from "./FadeInOutSection";
 
 const cemeteries = [
-  "Alberton, Gauteng",
-  "Benoni, Gauteng",
-  "Brakpan, Gauteng",
-  "Boksburg, Gauteng",
-  "Edenvale, Gauteng",
-  "Germiston, Gauteng",
-  "Kempton Park, Gauteng",
-  "Springs, Gauteng",
+  "Alberton",
+  "Benoni",
+  "Brakpan", 
+  "Boksburg",
+  "Centurion",
+  "Edenvale",
+  "Germiston",
+  "Heidelberg",
+  "Johannesburg",
+  "Kempton Park",
+  "Pretoria",
+  "Springs",
 ];
 
 const ServiceAreas: React.FC = () => {
-  const [request, setRequest] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!request) return;
-    alert(`Request submitted for: ${request}`);
-    setRequest("");
-    // Optional: Hook up to backend or email form service
-  };
 
   return (
     <FadeInOutSection>
-    <section id="service-areas" className="bg-gray-50 py-20 px-6">
-      <div className="max-w-5xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
-          Our Service Areas
-        </h2>
-        <p className="text-lg text-gray-600 mb-10">
-          We proudly serve families in towns and cities across South Africa.
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-4 text-left mb-12">
-          {cemeteries.map((cemetery, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-3xl shadow-sm p-4 border hover:shadow-md transition"
-            >
-              <p className="text-gray-800 font-medium">{cemetery}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Request Form */}
-        <form onSubmit={handleSubmit} className="max-w-xl mx-auto">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Can’t find your cemetery? Request it here:
-          </label>
-          <div className="flex flex-col md:flex-row gap-3">
-            <input
-              type="text"
-              value={request}
-              onChange={(e) => setRequest(e.target.value)}
-              placeholder="Enter cemetery name & location"
-              className="flex-1 px-4 py-2 border border-gray-300 rounded-full"
-              required
-            />
-            <button
-              type="submit"
-              className="mx-auto px-6 py-2 cursor-pointer bg-[color:var(--primary)] text-white rounded-full hover:bg-[color:var(--secondary)] transition"
-            >
-              Submit
-            </button>
+      <section id="service-areas" className="bg-stone-50 py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-slate-800 mb-6 leading-tight">
+              Our Service Areas
+            </h2>
+            <div className="w-16 h-px bg-slate-300 mx-auto mb-8"></div>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+              We proudly serve families throughout Gauteng with compassionate gravesite care, ensuring your loved one&apos;s resting place is always maintained with dignity and respect.
+            </p>
           </div>
-        </form>
-      </div>
-    </section>
-  </FadeInOutSection>
+
+          {/* Cemetery Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-16">
+            {cemeteries.map((cemetery, index) => (
+              <div
+                key={index}
+                className="group bg-white rounded-lg shadow-sm border border-slate-200 p-6 text-center hover:shadow-md hover:border-slate-300 transition-all duration-300 hover:-translate-y-0.5"
+              >
+                <p className="text-slate-700 font-medium text-sm sm:text-base group-hover:text-slate-800 transition-colors">
+                  {cemetery}
+                </p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+    </FadeInOutSection>
   );
 };
 

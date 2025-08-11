@@ -5,6 +5,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import emailjs from 'emailjs-com';
 import { trackLead } from '../utils/fbpixel';
 import { trackLeadFormSubmit, trackFormStart, trackPlanSelection, trackFrequencySelection } from '../utils/gtm';
+import { gtag_report_conversion_enhanced } from '../utils/googleAdsConversions';
 
 export default function GetStartedForm() {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -111,6 +112,18 @@ export default function GetStartedForm() {
             firstName: form.firstName,
             lastName: form.lastName,
           });
+
+          // Google Ads conversion tracking
+          gtag_report_conversion_enhanced(
+            planValue,
+            'ZAR',
+            {
+              email: form.email,
+              first_name: form.firstName,
+              last_name: form.lastName,
+              phone_number: form.mobile,
+            }
+          );
           
           resetForm();
         },

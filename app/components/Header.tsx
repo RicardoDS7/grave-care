@@ -17,9 +17,10 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden sm:flex items-center gap-6 text-sm font-medium text-gray-600">
-          <a href="#how-it-works" className="hover:text-[color:var(--secondary)]">How It Works</a>
           <a href="#services" className="hover:text-[color:var(--secondary)]">Pricing & Services</a>
-          {/* <a href="#gallery" className="hover:text-[color:var(--secondary)]">Before & After</a> */}
+          <a href="#gallery" className="hover:text-[color:var(--secondary)]">Before & After</a>
+          <a href="#testimonials" className="hover:text-[color:var(--secondary)]">Testimonials</a>
+          <a href="#faq" className="hover:text-[color:var(--secondary)]">FAQs</a>
           <a
             href="#get-started-form"
             className="bg-[color:var(--primary)] text-white font-medium px-4 py-2 rounded-full hover:bg-[color:var(--secondary)] transition"
@@ -54,9 +55,10 @@ export default function Header() {
 
         {/* Nav Items */}
         <nav className="flex flex-col px-6 py-6 space-y-6 text-gray-700 text-lg">
-          <a href="#how-it-works" onClick={() => setIsOpen(false)}>How It Works</a>
-          <a href="#services" onClick={() => setIsOpen(false)}>Pricing & Services</a>
-          {/* <a href="#gallery" onClick={() => setIsOpen(false)}>Before & After</a> */}
+          <a href="#services" className="hover:text-[color:var(--secondary)]">Pricing & Services</a>
+          <a href="#gallery" className="hover:text-[color:var(--secondary)]">Before & After</a>
+          <a href="#testimonials" className="hover:text-[color:var(--secondary)]">Testimonials</a>
+          <a href="#faq" className="hover:text-[color:var(--secondary)]">FAQs</a>
           <a
             href="#get-started-form"
             className="mt-4 bg-brand-primary text-white text-center font-medium px-4 py-2 rounded-full hover:bg-green-700 transition"

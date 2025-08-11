@@ -2,12 +2,14 @@
 
 import HeroSection from "./components/HeroSection";
 import ServicesOverview from "./components/ServicesOverview";
-import HowItWorks from "./components/HowItWorks";
 import FinalCtaBanner from "./components/CTA";
+import BeforeAfterGallery from "./components/BeforeVSAfter";
+import TestimonialsCarousel from "./components/Testimonials";
 import Footer from "./components/Footer";
 import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import { trackViewContent } from "./utils/fbpixel";
+import FloatingWhatsAppButton from "./components/WhatsAppFloatingButton";
 
 // const TestimonialsCarousel = dynamic(() => import("./components/Testimonials"), {ssr: false});
 
@@ -35,11 +37,9 @@ export default function Home() {
 
       <PricingPlans />
 
-      <HowItWorks />
+      <BeforeAfterGallery />
 
-      {/* <BeforeAfterGallery />
-
-      <TestimonialsCarousel /> */}
+      <TestimonialsCarousel />
 
       <ServiceAreas />
 
@@ -48,6 +48,8 @@ export default function Home() {
       <FinalCtaBanner />
       
       <GetStartedForm />
+
+      <FloatingWhatsAppButton />
 
       <Footer />
 
