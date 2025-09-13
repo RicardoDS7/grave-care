@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import { trackViewContent } from "./utils/fbpixel";
-import FloatingWhatsAppButton from "./components/WhatsAppFloatingButton";
+// import FloatingWhatsAppButton from "./components/WhatsAppFloatingButton";
 
 // const TestimonialsCarousel = dynamic(() => import("./components/Testimonials"), {ssr: false});
 
@@ -49,7 +49,7 @@ export default function Home() {
       
       <GetStartedForm />
 
-      <FloatingWhatsAppButton />
+      {/* <FloatingWhatsAppButton /> */}
 
       <Footer />
 

@@ -17,6 +17,13 @@ const testimonials: Testimonial[] = [
     location: "Kempton Park",
     rating: 5,
   },
+  {
+    quote:
+      "Thank you, Ricardo, for your exceptional work in cleaning the Grave site. Your dedication and attention to detail mean so much to us. With appreciation, Martin and Family.",
+    name: "Martin W",
+    location: "Vanderbijlpark",
+    rating: 5,
+  },
 ];
 
 // Custom star icon component

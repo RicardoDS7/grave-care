@@ -11,6 +11,12 @@ type GalleryItem = {
 
 const galleryItems: GalleryItem[] = [
   {
+    beforeImg: `/before3.jpg`,
+    afterImg: `/after3.jpg`,
+    location: "Kromvlei Cemetery",
+    date: "August, 2025",
+  },
+  {
     beforeImg: `/before1.webp`,
     afterImg: `/after1.webp`,
     location: "Heidelberg Cemetery",
