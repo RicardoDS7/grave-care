@@ -38,7 +38,7 @@ const ServiceAreas: React.FC = () => {
                 key={index}
                 className="group bg-white rounded-lg shadow-sm border border-slate-200 p-6 text-center hover:shadow-md hover:border-slate-300 transition-all duration-300 hover:-translate-y-0.5"
               >
-                <h3 className="text-slate-700 font-medium text-sm sm:text-base group-hover:text-slate-800 transition-colors">
+                <h3 className="font-medium text-sm sm:text-base group-hover:text-slate-800 transition-colors">
                   {cemetery}
                 </h3>
               </div>
