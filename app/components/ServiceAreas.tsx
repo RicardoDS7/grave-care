@@ -4,18 +4,14 @@ import React from "react";
 import FadeInOutSection from "./FadeInOutSection";
 
 const cemeteries = [
-  "Alberton",
-  "Benoni",
-  "Brakpan", 
-  "Boksburg",
-  "Centurion",
-  "Edenvale",
-  "Germiston",
-  "Heidelberg",
-  "Johannesburg",
-  "Kempton Park",
-  "Pretoria",
-  "Springs",
+  "Alberton Cemetery",
+  "Benoni Cemetery",
+  "Boksburg Cemetery",
+  "Edenvale Cemetery",
+  "Germiston Cemetery",
+  "Heidelberg Cemetery",
+  "Westpark Cemetery",
+  "Zuurfontein Cemetery",
 ];
 
 const ServiceAreas: React.FC = () => {
