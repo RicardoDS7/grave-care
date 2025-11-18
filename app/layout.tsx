@@ -19,9 +19,9 @@ const playfair = Playfair_Display({
 
 // layout.tsx
 export const metadata: Metadata = {
-  title: "GraveCare | Grave Cleaning & Tombstone Maintenance in South Africa",
+  title: "GraveCare | Grave Maintenance & Cleaning Services in Johannesburg",
   description:
-    "Affordable and respectful grave care services in South Africa. We offer grave cleaning, tombstone maintenance, and flower placements. Book online to honor your loved ones today.",
+    "Affordable and respectful grave care services in Gauteng. We offer grave cleaning, grave maintenance, and fresh flower placements. Book online to honor your loved ones today.",
   alternates: {
     canonical: 'https://gravecare.co.za/',
   },
