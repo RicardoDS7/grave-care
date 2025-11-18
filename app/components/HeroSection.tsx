@@ -20,7 +20,7 @@ export default function HeroSection({
   altText
 }: HeroSectionProps) {
   return (
-    <section className="relative py-16 lg:py-40 flex items-center justify-center overflow-hidden">
+    <section className="relative py-6 lg:py-40 flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
