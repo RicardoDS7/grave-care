@@ -1,117 +1,144 @@
-import { BrushIcon, CameraIcon, FlowerIcon, LeafIcon } from "lucide-react";
-import React from "react";
-import type { ReactElement } from "react";
+import React from 'react'
+import {GiGardeningShears, GiGraveFlowers, GiTombstone } from 'react-icons/gi'
+import { PiFlowerTulip } from 'react-icons/pi'
 
-type Service = {
-  icon: ReactElement;
-  title: string;
-  description: string;
-  tag?: string;
-  tagColor?: "primary" | "secondary" | "tertiary";
-};
 
-const services: Service[] = [
-  {
-    icon: <LeafIcon color="#815AF7"/>,
-    title: "Grave Cleaning & Site Maintenance",
-    description:
-      "We gently clean headstones, remove weeds, and tidy the surrounding area — keeping your loved one's resting place beautiful, dignified, and well cared for.",
-    tag: "Included in All Plans",
-    tagColor: "primary",
-  },
-  {
-    icon: <FlowerIcon color="#815AF7"/>,
-    title: "Fresh Flowers & Tribute Placement",
-    description:
-      "Seasonal or custom flower arrangements are thoughtfully placed at the grave — a meaningful way to honour your loved one's memory, no matter where you are.",
-    tag: "Standard & Premium Plans",
-    tagColor: "primary",
-  },
-  {
-    icon: <BrushIcon color="#815AF7"/>,
-    title: "Headstone Restoration & Lettering",
-    description:
-      "We restore weathered headstones by repainting faded lettering and renewing inscriptions — preserving the name and legacy engraved in stone.",
-    tag: "Premium & Once-off Plans",
-    tagColor: "primary",
-  },
-  {
-    icon: <CameraIcon color="#815AF7"/>,
-    title: "Photo Updates & Flexible Plans",
-    description:
-      "We'll keep you connected with clear, timestamped photos after every visit — choose a once-off service or a flexible subscription that fits your needs.",
-    tag: "Included in All Plans",
-    tagColor: "primary",
-  },
-];
+interface Service {
+  title: string
+  description: string
+  icon: string
+}
 
-const getTagStyles = (tagColor?: "primary" | "secondary" | "tertiary") => {
-  switch (tagColor) {
-    case "primary":
-      return "bg-primary/20 text-[var(--secondary)] border border-[var(--secondary)]";
-    case "secondary":
-      return "bg-blue-50 text-blue-700 border border-blue-200";
-    case "tertiary":
-      return "bg-amber-50 text-amber-700 border border-amber-200";
-    default:
-      return "bg-slate-50 text-slate-700 border border-slate-200";
-  }
-};
+interface ServicesOverviewProps {
+  title: string
+  subtitle: string
+  services: Service[]
+}
 
-const ServicesOverview: React.FC = () => {
+const iconComponents = {
+  headstone: (
+    <GiTombstone className="w-12 h-12" />
+  ),
+  garden: (
+    <GiGardeningShears className="w-12 h-12" />
+  ),
+  gravegarden: (
+    <GiGraveFlowers className="w-12 h-12" />
+  ),
+  flowers: (
+    <PiFlowerTulip className="w-12 h-12" />
+  )
+}
+
+export default function ServicesOverview({
+  title,
+  subtitle,
+  services
+}: ServicesOverviewProps) {
   return (
-    <section id="services" className="bg-white py-20 px-6">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
+    <section id="services-overview" className="py-16 lg:py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-slate-800 mb-6 leading-tight">
-            What We Do
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+            {title}
           </h2>
-          <div className="w-16 h-px bg-slate-300 mx-auto mb-8"></div>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            We provide meticulous cleaning, maintenance, and beautification of gravesites — and we&apos;ll keep you updated with photos from each visit.
+          <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6 lg:mb-8 rounded-full"></div>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            {subtitle}
           </p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-stone-50 border border-stone-200 rounded-xl p-8 text-center hover:bg-white hover:shadow-lg hover:border-stone-300 transition-all duration-300 hover:-translate-y-1"
+              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 text-center group hover:transform hover:scale-105"
             >
-              {/* Icon Container */}
-              <div className="mb-6 flex justify-center">
-                <div className="p-3 bg-white rounded-full shadow-sm group-hover:shadow-md transition-shadow duration-300">
-                  {service.icon}
-                </div>
+              {/* Icon */}
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-gray-100 text-primary rounded-full mb-6 group-hover:bg-secondary group-hover:text-white transition-all duration-300">
+                {iconComponents[service.icon as keyof typeof iconComponents]}
               </div>
-              
-              {/* Content */}
-              <div className="space-y-4">
-                <h3 className="text-xl font-medium text-slate-800 leading-tight">
-                  {service.title}
-                </h3>
-                
-                <p className="text-sm text-slate-600 leading-relaxed">
-                  {service.description}
-                </p>
-                
-                {/* Tag */}
-                {service.tag && (
-                  <div className="pt-2">
-                    <span className={`inline-block px-3 py-1.5 text-xs font-medium rounded-full ${getTagStyles(service.tagColor)}`}>
-                      {service.tag}
-                    </span>
-                  </div>
-                )}
-              </div>
+
+              {/* Service Title */}
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                {service.title}
+              </h3>
+
+              {/* Service Description */}
+              <p className="text-gray-600 leading-relaxed">
+                {service.description}
+              </p>
+
             </div>
           ))}
         </div>
+
+        {/* Process Overview */}
+        <div className="mt-20">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+              Our Simple 3-Step Process
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Step 1 */}
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-primary to-secondary text-white rounded-full text-2xl font-bold mb-4">
+                1
+              </div>
+              <h4 className="text-xl font-semibold text-gray-900 mb-2">
+                Free Consultation
+              </h4>
+              <p className="text-gray-600">
+                We visit the grave, assess its condition, and listen to your wishes.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-primary to-secondary text-white rounded-full text-2xl font-bold mb-4">
+                2
+              </div>
+              <h4 className="text-xl font-semibold text-gray-900 mb-2">
+                Personalised care plan
+              </h4>
+              <p className="text-gray-600">
+                We create a plan based on the number of graves, your preferred frequency, and the services you want.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-primary to-secondary text-white rounded-full text-2xl font-bold mb-4">
+                3
+              </div>
+              <h4 className="text-xl font-semibold text-gray-900 mb-2">
+                Ongoing care & updates
+              </h4>
+              <p className="text-gray-600">
+                Regular professional maintenance plus before-and-after photos after every visit.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16 text-center">
+          <a
+            href="#contact-form"
+            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-secondary hover:bg-secondary text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg"
+          >
+            Book a Consultation
+            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
-  );
-};
-
-export default ServicesOverview;
+  )
+}

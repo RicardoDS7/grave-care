@@ -17,13 +17,12 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden sm:flex items-center gap-6 text-sm font-medium text-gray-600">
-          <a href="#services" className="hover:text-[color:var(--secondary)]">Pricing & Services</a>
-          <a href="#gallery" className="hover:text-[color:var(--secondary)]">Before & After</a>
+          <a href="#services-overview" className="hover:text-[color:var(--secondary)]">Services</a>
           <a href="#testimonials" className="hover:text-[color:var(--secondary)]">Testimonials</a>
           <a href="#faq" className="hover:text-[color:var(--secondary)]">FAQs</a>
           <a
-            href="#get-started-form"
-            className="bg-[color:var(--primary)] text-white font-medium px-4 py-2 rounded-full hover:bg-[color:var(--secondary)] transition"
+            href="#contact-form"
+            className="bg-gradient-to-r from-primary to-secondary text-white font-medium px-4 py-2 rounded-lg hover:scale-105 transition"
           >
             Get Started
           </a>
@@ -55,12 +54,14 @@ export default function Header() {
 
         {/* Nav Items */}
         <nav className="flex flex-col px-6 py-6 space-y-6 text-gray-700 text-lg">
-          <a href="#services" className="hover:text-[color:var(--secondary)]">Pricing & Services</a>
-          <a href="#gallery" className="hover:text-[color:var(--secondary)]">Before & After</a>
-          <a href="#testimonials" className="hover:text-[color:var(--secondary)]">Testimonials</a>
-          <a href="#faq" className="hover:text-[color:var(--secondary)]">FAQs</a>
+          <a href="#services-overview" className="hover:text-[color:var(--secondary)]"
+          onClick={() => setIsOpen(false)}>Services</a>
+          <a href="#testimonials" className="hover:text-[color:var(--secondary)]"
+          onClick={() => setIsOpen(false)}>Testimonials</a>
+          <a href="#faq" className="hover:text-[color:var(--secondary)]"
+          onClick={() => setIsOpen(false)}>FAQs</a>
           <a
-            href="#get-started-form"
+            href="#contact-form"
             className="mt-4 bg-brand-primary text-white text-center font-medium px-4 py-2 rounded-full hover:bg-green-700 transition"
             onClick={() => setIsOpen(false)}
           >

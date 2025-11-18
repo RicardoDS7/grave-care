@@ -1,41 +1,41 @@
-"use client";
-
-import { useEffect } from "react";
-import { trackViewContent } from "./utils/fbpixel";
+import Footer from '../components/Footer'
 
 import { 
   HeroSection,
   ServicesOverview,
-  ContactForm,
+  AboutWesparkCemetery,
   FAQSection,
+  BreadcrumbSchema,
   TestimonialsSection,
-  FloatingWhatsAppButton,
-  Footer
-} from "./components";
-import ServiceAreas from "./components/ServiceAreas";
+} from './components'
+import ContactForm from '../components/ContactForm'
+import FloatingWhatsAppButton from '../components/WhatsAppFloatingButton'
 
-export default function Home() {
-
-  useEffect(() => {
-    trackViewContent();
-  }, []);
-
+export default function WesparkCemeteryPage() {
   return (
     <main className="min-h-screen">
+      
+      {/* Breadcrumb Navigation - Above the fold for better UX and SEO */}
+      <BreadcrumbSchema 
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Westpark Cemetery', url: '/westpark-cemetery' }
+        ]}
+      />
 
         {/* Hero Section - Above the fold content */}
         <HeroSection 
-          title="Professional Grave Maintenance Services in Gauteng"
+          title="Professional Grave Care Services at Westpark Cemetery"
           subtitle="Compassionate upkeep and maintenance — so your loved one’s resting place is always treated with dignity and care."
           primaryCTA="Request a Visit"
           secondaryCTA="View Services"
           backgroundImage="/hero-background-cover.webp"
-          altText="Professional grave care services in Gauteng"
+          altText="Professional grave care services at Wespark Cemetery Johannesburg"
         />
 
         {/* Services Overview - Core offering highlight */}
         <ServicesOverview 
-          title="Our Services"
+          title="Our Westpark Cemetery Services"
           subtitle="Comprehensive grave care offering peace of mind, and lasting dignity."
           services={[
             {
@@ -61,9 +61,22 @@ export default function Home() {
           ]}
         />
 
+        {/* About Wespark Cemetery Section - Local keyword targeting */}
+        <AboutWesparkCemetery 
+          title="About Westpark Cemetery"
+          content="Established in 1942, Westpark Cemetery is one of Johannesburg's most significant burial grounds, serving as the final resting place for many of South Africa's notable citizens. Located in Montgomery Park, this historic cemetery spans multiple denominational sections including Christian, Jewish, Muslim, and Chinese burial areas, reflecting Johannesburg's diverse heritage."
+          highlights={[
+            "Historic cemetery established in 1942",
+            "Multi-denominational burial ground",
+            "Located in Montgomery Park, northwest Johannesburg", 
+            "Home to Commonwealth War Graves",
+            "Final resting place of many notable South Africans"
+          ]}
+        />
+
         {/* Testimonials - Social proof */}
         <TestimonialsSection 
-          title="What Families Say About Our Services"
+          title="What Families Say About Our Cemetery Services"
           testimonials={[
             {
               name: "Martin W.",
@@ -81,23 +94,24 @@ export default function Home() {
         />
 
         {/* FAQ Section - Long-tail keyword targeting */}
-        <ServiceAreas />
-        
-        {/* FAQ Section - Long-tail keyword targeting */}
         <FAQSection 
           title="Frequently Asked Questions"
           faqs={[
             {
-              question: "What grave care services do you offer?",
-              answer: "We provide comprehensive grave care services including headstone cleaning, grave garden maintenance, grave restoration, fresh flower placement, and regular monitoring visits."
+              question: "What grave care services do you offer at Westpark Cemetery?",
+              answer: "We provide comprehensive grave care services at Westpark Cemetery including headstone cleaning, grave garden maintenance, grave restoration, fresh flower placement, and regular monitoring visits. All services are performed with respect for the cemetery's diverse denominational areas."
             },
             {
-              question: "How often do you visit the graves?",
+              question: "How often do you visit graves at Westpark Cemetery?",
               answer: "We offer flexible visit schedules ranging from weekly to quarterly visits, depending on your preferences and needs. All visits include photographic updates sent to you so you can see the care provided."
             },
             {
-              question: "What are your rates for grave maintenance?",
-              answer: "Our rates vary depending on the services required and visit frequency. We offer competitive pricing with packages starting from R179 per visit. Contact us for a personalised quote based on your specific needs."
+              question: "Do you work in all sections of Westpark Cemetery?",
+              answer: "Yes, we provide services across all sections of Westpark Cemetery including the Christian, Jewish, Muslim, Chinese and Greek Orthodox sections, and the military Commonwealth War Graves areas. We're familiar with the specific requirements and traditions of each section."
+            },
+            {
+              question: "What are your rates for grave care at Westpark Cemetery?",
+              answer: "Our rates vary depending on the services required and visit frequency. We offer competitive pricing with packages starting from R179 per visit. Contact us for a personalised quote based on your specific needs at Westpark Cemetery."
             },
             {
               question: "Do you provide tombstone services?",

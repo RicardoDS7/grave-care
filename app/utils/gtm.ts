@@ -16,7 +16,6 @@ export const pushToDataLayer = (eventData: Record<string, unknown>) => {
 
 // Lead form submission event
 export const trackLeadFormSubmit = (formData: {
-  plan: string;
   frequency: string;
   value?: number;
   currency?: string;
@@ -27,7 +26,6 @@ export const trackLeadFormSubmit = (formData: {
   pushToDataLayer({
     event: 'lead_form_submit',
     form_type: 'contact_form',
-    plan_selected: formData.plan,
     service_frequency: formData.frequency,
     value: formData.value || 0,
     currency: formData.currency || 'ZAR',

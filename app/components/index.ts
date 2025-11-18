@@ -1,0 +1,21 @@
+// Export all components for easy importing
+export { default as HeroSection } from '../components/HeroSection'
+export { default as ServicesOverview } from '../components/ServicesOverview'
+export { default as ContactForm } from '../components/ContactForm'
+export { default as FAQSection } from '../components/FAQSection'
+export { default as BreadcrumbSchema } from '../components/BreadcrumbSchema'
+export { default as LocalBusinessSchema } from '../components/LocalBusinessSchema'
+export { default as TestimonialsSection } from '../components/TestimonialsSection'
+export { default as Footer } from '../components/Footer'
+export { default as FloatingWhatsAppButton } from '../components/WhatsAppFloatingButton'
+
+// Type exports for component props
+export type { default as HeroSectionProps } from '../components/HeroSection'
+export type { default as ServicesOverviewProps } from '../components/ServicesOverview'
+export type { default as ContactFormProps } from '../components/ContactForm'
+export type { default as FAQSectionProps } from '../components/FAQSection'
+export type { default as BreadcrumbSchemaProps } from '../components/BreadcrumbSchema'
+export type { default as LocalBusinessSchemaProps } from '../components/LocalBusinessSchema'
+export type { default as TestimonialsSectionProps } from '../components/TestimonialsSection'
+export type { default as FooterProps } from '../components/Footer'
+export type { default as FloatingWhatsAppButtonProps } from '../components/WhatsAppFloatingButton'
