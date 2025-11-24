@@ -1,26 +1,26 @@
 import type { Metadata } from 'next'
 
-// SEO Metadata for Westpark Cemetery
+// SEO Metadata for Newclare Cemetery
 export const metadata: Metadata = {
-  title: 'Professional Grave Care & Maintenance Services at Westpark Cemetery',
-  description: 'Expert grave maintenance and care services at Westpark Cemetery in Johannesburg. Professional headstone cleaning, garden maintenance, and grave restoration.',
-  keywords: 'Westpark cemetery, grave care Johannesburg, headstone cleaning, cemetery maintenance, grave restoration, memorial care, Westpark cemetery services',
+  title: 'Professional Grave Care & Maintenance Services at Newclare Cemetery',
+  description: 'Expert grave maintenance and care services at Newclare Cemetery in Johannesburg. Professional headstone cleaning, garden maintenance, and grave restoration.',
+  keywords: 'Newclare cemetery, grave care Johannesburg, headstone cleaning, cemetery maintenance, grave restoration, memorial care, Newclare cemetery services',
   openGraph: {
-    title: 'Professional Grave Care Services at Westpark Cemetery',
-    description: 'Expert grave maintenance and care services at Westpark Cemetery in Johannesburg. Professional headstone cleaning, garden maintenance, and grave restoration.',
-    url: 'https://gravecare.co.za/westpark-cemetery',
+    title: 'Professional Grave Care Services at Newclare Cemetery',
+    description: 'Expert grave maintenance and care services at Newclare Cemetery in Johannesburg. Professional headstone cleaning, garden maintenance, and grave restoration.',
+    url: 'https://gravecare.co.za/newclare-cemetery',
     siteName: 'GraveCare.co.za',
     images: [{
-      url: 'https://gravecare.co.za/images/westpark-cemetery-services-og.jpg',
+      url: 'https://gravecare.co.za/images/newclare-cemetery-services-og.jpg',
       width: 1200,
       height: 630,
-      alt: 'Professional grave care services at Westpark Cemetery Johannesburg'
+      alt: 'Professional grave care services at Newclare Cemetery Johannesburg'
     }],
     locale: 'en_ZA',
     type: 'website',
   },
   alternates: {
-    canonical: 'https://gravecare.co.za/westpark-cemetery',
+    canonical: 'https://gravecare.co.za/newclare-cemetery',
   },
 }
 
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'GraveCare.co.za - Westpark Cemetery Services',
-  description: 'Professional grave care and maintenance services at Westpark Cemetery in Johannesburg.',
-  url: 'https://gravecare.co.za/westpark-cemetery',
+  name: 'GraveCare.co.za - Newclare Cemetery Services',
+  description: 'Professional grave care and maintenance services at Newclare Cemetery in Johannesburg.',
+  url: 'https://gravecare.co.za/newclare-cemetery',
   telephone: '+27-68-862-5442',
   address: {
     '@type': 'PostalAddress',
@@ -74,55 +74,7 @@ const localBusinessSchema = {
   }
 }
 
-// FAQ Schema
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'What grave care services do you offer at Westpark Cemetery?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'We provide comprehensive grave care services at Westpark Cemetery including headstone cleaning, grave garden maintenance, grave restoration, fresh flower placement, and regular monitoring visits. All services are performed with respect for the cemetery\'s diverse denominational areas.'
-      }
-    },
-    {
-      '@type': 'Question',
-      name: 'How often do you visit graves at Westpark Cemetery?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'We offer flexible visit schedules ranging from weekly to quarterly visits, depending on your preferences and needs. All visits include photographic updates sent to you so you can see the care provided.'
-      }
-    },
-    {
-      '@type': 'Question',
-      name: 'Do you work in all sections of Westpark Cemetery?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes, we provide services across all sections of Westpark Cemetery including the Christian, Jewish, Muslim, Chinese and Greek Orthodox sections, and the military Commonwealth War Graves areas. We\'re familiar with the specific requirements and traditions of each section.'
-      }
-    },
-    {
-      '@type': 'Question',
-      name: 'What are your rates for grave care at Westpark Cemetery?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Our rates vary depending on the services required and visit frequency. We offer competitive pricing with packages starting from R179 per visit. Contact us for a personalised quote based on your specific needs at Westpark Cemetery.'
-      }
-    },
-    {
-      '@type': 'Question',
-      name: 'Do you provide tombstone services?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes we do, but not directly. We work with trusted local stonemasons who can assist with new tombstones, repairs, and restorations.'
-      }
-    }
-  ]
-}
-
-export default function WestparkCemeteryLayout({
+export default function CemeteryLayout({
   children,
 }: {
   children: React.ReactNode
@@ -132,10 +84,6 @@ export default function WestparkCemeteryLayout({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       {children}
     </>

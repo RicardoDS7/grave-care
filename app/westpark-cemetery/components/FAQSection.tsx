@@ -12,6 +12,24 @@ interface FAQSectionProps {
   faqs: FAQ[]
 }
 
+// 1. Utility function to generate the JSON-LD schema object
+const generateFaqSchema = (faqs: FAQ[]) => {
+  const mainEntity = faqs.map(faq => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  }))
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: mainEntity,
+  }
+}
+
 const FAQItem = ({ faq, isOpen, onToggle }: {
   faq: FAQ
   index: number
@@ -19,6 +37,9 @@ const FAQItem = ({ faq, isOpen, onToggle }: {
   onToggle: () => void
 }) => {
   return (
+    // We can also add microdata attributes here for belt-and-suspenders SEO,
+    // but JSON-LD is the modern standard. 
+    // Example: <div itemScope itemProp="mainEntity" itemType="https://schema.org/Question">...</div>
     <div className="border border-gray-200 rounded-lg overflow-hidden">
       <button
         onClick={onToggle}
@@ -56,8 +77,19 @@ export default function FAQSection({
     setOpenIndex(openIndex === index ? null : index)
   }
 
+  // 2. Generate the schema data
+  const faqSchemaData = generateFaqSchema(faqs)
+
   return (
     <section id="faq" className="py-16 lg:py-24 bg-gray-50">
+      
+      {/* 3. INJECT THE JSON-LD SCHEMA */}
+      {/* This renders the FAQPage schema ONLY when the component is rendered on the page. */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchemaData) }}
+      />
+      
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
