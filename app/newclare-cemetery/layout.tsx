@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Professional Grave Care Services at Newclare Cemetery',
     description: 'Expert grave maintenance and care services at Newclare Cemetery in Johannesburg. Professional headstone cleaning, garden maintenance, and grave restoration.',
     url: 'https://gravecare.co.za/newclare-cemetery',
-    siteName: 'GraveCare.co.za',
+    siteName: 'gravecare.co.za',
     images: [{
       url: 'https://gravecare.co.za/images/newclare-cemetery-services-og.jpg',
       width: 1200,

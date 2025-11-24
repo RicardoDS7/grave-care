@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: 'Professional Grave Care Services at Westpark Cemetery',
     description: 'Expert grave maintenance and care services at Westpark Cemetery in Johannesburg. Professional headstone cleaning, garden maintenance, and grave restoration.',
     url: 'https://gravecare.co.za/westpark-cemetery',
-    siteName: 'GraveCare.co.za',
+    siteName: 'gravecare.co.za',
     images: [{
       url: 'https://gravecare.co.za/images/westpark-cemetery-services-og.jpg',
       width: 1200,
