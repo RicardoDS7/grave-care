@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  name: 'GraveCare.co.za - Newclare Cemetery Services',
+  name: 'gravecare.co.za - Newclare Cemetery Services',
   description: 'Professional grave care and maintenance services at Newclare Cemetery in Johannesburg.',
   url: 'https://gravecare.co.za/newclare-cemetery',
   telephone: '+27-68-862-5442',

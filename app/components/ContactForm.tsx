@@ -336,7 +336,7 @@ export default function GetStartedForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full bg-gradient-to-r from-primary to-secondary text-white px-6 py-4 lg:py-5 rounded-lg font-semibold text-base lg:text-lg transition-all duration-200 shadow-lg transform ${
+              className={`cursor-pointer w-full bg-gradient-to-r from-primary to-secondary text-white px-6 py-4 lg:py-5 rounded-lg font-semibold text-base lg:text-lg transition-all duration-200 shadow-lg transform ${
                 isSubmitting 
                   ? 'opacity-60 cursor-not-allowed' 
                   : 'hover:scale-[1.02] hover:shadow-xl active:scale-[0.98]'

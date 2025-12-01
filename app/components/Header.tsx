@@ -62,8 +62,7 @@ export default function Header() {
           onClick={() => setIsOpen(false)}>FAQs</a>
           <a
             href="#contact-form"
-            className="mt-4 bg-brand-primary text-white text-center font-medium px-4 py-2 rounded-full hover:bg-green-700 transition"
-            onClick={() => setIsOpen(false)}
+            className="bg-gradient-to-r from-primary to-secondary text-white text-center font-medium px-4 py-2 rounded-lg hover:scale-105 transition"
           >
             Get Started
           </a>

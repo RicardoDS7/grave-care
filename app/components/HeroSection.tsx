@@ -20,16 +20,16 @@ export default function HeroSection({
   altText
 }: HeroSectionProps) {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src={backgroundImage}
           alt={altText}
+          quality={60}
           fill
-          className="object-cover object-center"
+          className="object-cover object-center w-full"
           priority
-          sizes="100vw"
         />
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-black/60"></div>
@@ -92,12 +92,6 @@ export default function HeroSection({
             </Link>
           </div>
 
-          {/* Additional Trust Signal */}
-          <div className="mt-8 text-white/80">
-            <p className="text-sm md:text-base">
-              ⭐⭐⭐⭐⭐ Rated by families who trust us with their loved ones
-            </p>
-          </div>
         </div>
       </div>
 

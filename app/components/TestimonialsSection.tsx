@@ -210,8 +210,9 @@ export default function TestimonialsSection({
                           <Image
                             src={img.src}
                             alt={img.alt}
+                            quality={60}
                             fill
-                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 33vw"
                             className="object-cover"
                             priority={i === 1}
                           />
