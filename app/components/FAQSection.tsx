@@ -81,7 +81,7 @@ export default function FAQSection({
   const faqSchemaData = generateFaqSchema(faqs)
 
   return (
-    <section id="faq" className="py-16 lg:py-24 bg-gray-50">
+    <section id="faq" className="pt-16 lg:pt-24 bg-gray-50">
       
       {/* 3. INJECT THE JSON-LD SCHEMA */}
       {/* This renders the FAQPage schema ONLY when the component is rendered on the page. */}

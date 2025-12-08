@@ -188,7 +188,7 @@ export default function GetStartedForm() {
   };
 
   return (
-    <section id="contact-form" className="px-4 py-12 lg:py-20 bg-gray-50">
+    <section id="contact-form" className="px-4 py-16 lg:py-20 bg-gray-50">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8 lg:mb-12">
