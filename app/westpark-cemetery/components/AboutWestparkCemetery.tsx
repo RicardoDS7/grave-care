@@ -1,6 +1,7 @@
 'use client'
 import { Phone } from 'lucide-react'
 import React, { useState } from 'react'
+import Image from 'next/image'
 
 interface AboutWesparkCemeteryProps {
   title: string
@@ -134,7 +135,7 @@ const NotableResidentsCarousel = () => {
             >
               {/* Photo */}
               <div className="relative w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden bg-gray-200">
-                <img
+                <Image
                   src={resident.imageUrl}
                   alt={resident.name}
                   className="w-full h-full object-cover"

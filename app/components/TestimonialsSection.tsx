@@ -368,7 +368,7 @@ export default function TestimonialsSection({
               Get your personalised plan today.
             </p>
             <button
-              onClick={(e)=>handleScrollToSection("contact-form")}
+              onClick={()=>handleScrollToSection("contact-form")}
               className="cursor-pointer inline-flex items-center px-8 py-4 bg-white text-secondary hover:bg-gray-50 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               Get Started

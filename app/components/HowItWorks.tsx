@@ -7,7 +7,7 @@ import {
   HeartHandshake,
   Camera,
 } from "lucide-react";
-import { handleScrollToForm } from "../utils/handleScrollToSection";
+import { handleScrollToSection } from "../utils/handleScrollToSection";
 
 type Step = {
   icon: React.ReactElement;
@@ -74,7 +74,7 @@ const HowItWorks: React.FC = () => {
         </div>
         <button
           type="button"
-          onClick={handleScrollToForm}
+          onClick={()=>handleScrollToSection("contact-form")}
           className="mt-8 w-full cursor-pointer text-white py-2 px-4 rounded-full 
                       font-medium transition bg-[color:var(--primary)] hover:bg-[color:var(--secondary)] 
                       focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[color:var(--primary)] sm:w-auto"

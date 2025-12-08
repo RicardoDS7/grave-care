@@ -131,7 +131,7 @@ export default function ServicesOverview({
         {/* CTA Section */}
         <div className="mt-16 text-center">
           <button
-            onClick={(e)=>handleScrollToSection("contact-form")}
+            onClick={()=>handleScrollToSection("contact-form")}
             className="cursor-pointer inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-secondary hover:bg-secondary text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-lg"
           >
             Book a Consultation

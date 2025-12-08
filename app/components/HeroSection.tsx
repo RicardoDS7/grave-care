@@ -75,7 +75,7 @@ export default function HeroSection({
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {/* Primary CTA */}
             <button
-              onClick={(e)=>handleScrollToSection("contact-form")}
+              onClick={()=>handleScrollToSection("contact-form")}
               className="cursor-pointer inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:bg-secondary transition-all duration-300 transform hover:scale-105 text-lg"
             >
               {primaryCTA}
@@ -86,7 +86,7 @@ export default function HeroSection({
 
             {/* Secondary CTA */}
             <button
-              onClick={(e)=>handleScrollToSection("services-overview")}
+              onClick={()=>handleScrollToSection("services-overview")}
               className="cursor-pointer inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-semibold rounded-lg border-2 border-white/30 hover:border-white/50 transition-all duration-300 text-lg"
             >
               {secondaryCTA}

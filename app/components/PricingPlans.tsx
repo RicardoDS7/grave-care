@@ -174,7 +174,7 @@ const PricingPlans: React.FC = () => {
 
                 <button
                   type="button"
-                  onClick={(e)=>handleScrollToSection("contact-form")}
+                  onClick={()=>handleScrollToSection("contact-form")}
                   className="mt-auto w-full cursor-pointer text-white py-2 px-4 rounded-lg font-medium transition bg-gradient-to-r from-primary to-secondary hover:scale-105 transition"
                 >
                   {isSubscription ? "Subscribe Now" : "Book Now"}

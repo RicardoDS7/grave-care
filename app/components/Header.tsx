@@ -18,11 +18,11 @@ export default function Header() {
 
         {/* Desktop Navigation */}
         <nav className="hidden sm:flex items-center gap-6 text-sm font-medium text-gray-600">
-          <button onClick={(e)=>handleScrollToSection("services-overview")} className="cursor-pointer hover:text-[color:var(--secondary)]">Services</button>
-          <button onClick={(e)=>handleScrollToSection("testimonials")} className="cursor-pointer hover:text-[color:var(--secondary)]">Testimonials</button>
-          <button onClick={(e)=>handleScrollToSection("faq")} className="cursor-pointer hover:text-[color:var(--secondary)]">FAQs</button>
+          <button onClick={()=>handleScrollToSection("services-overview")} className="cursor-pointer hover:text-[color:var(--secondary)]">Services</button>
+          <button onClick={()=>handleScrollToSection("testimonials")} className="cursor-pointer hover:text-[color:var(--secondary)]">Testimonials</button>
+          <button onClick={()=>handleScrollToSection("faq")} className="cursor-pointer hover:text-[color:var(--secondary)]">FAQs</button>
           <button
-            onClick={(e)=>handleScrollToSection("contact-form")}
+            onClick={()=>handleScrollToSection("contact-form")}
             className="cursor-pointer bg-gradient-to-r from-primary to-secondary text-white font-medium px-4 py-2 rounded-lg hover:scale-105 transition"
           >
             Get Started
