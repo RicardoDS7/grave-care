@@ -76,7 +76,7 @@ export default function Home() {
         subtitle="Compassionate upkeep and maintenance — so your loved one's resting place is always treated with dignity and care."
         primaryCTA="Request a Visit"
         secondaryCTA="View Services"
-        backgroundImage="/hero-background-cover.webp"
+        backgroundImage="/hero-background-cover.avif"
         altText="Professional grave care services in Gauteng"
       />
 

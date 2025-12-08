@@ -43,25 +43,37 @@ interface GraveImage {
 
 const GRAVE_IMAGES: GraveImage[] = [
   {
-    src: "/before1.webp",
-    alt: "Headstone with fresh floral arrangement",
+    src: "/before4.avif",
+    alt: "Westpark Cemetery grave overgrown with weeds",
+    caption: "Before",
+    location: "Westpark Cemetery",
+  },
+  {
+    src: "/after4.avif",
+    alt: "Westpark Cemetery",
+    caption: "After",
+    location: "Westpark Cemetery",
+  },
+  {
+    src: "/before5.avif",
+    alt: "Westpark Cemetery",
     caption: "Before",
     location: "",
   },
   {
-    src: "/after1.webp",
-    alt: "Neatly edged grave with clean paving",
+    src: "/after5.avif",
+    alt: "Westpark Cemetery",
     caption: "After",
     location: "",
   },
   {
-    src: "/before3.jpg",
-    alt: "Granite headstone polished and restored",
+    src: "/before6.avif",
+    alt: "Westpark Cemetery",
     caption: "Before",
     location: "",
   },
   {
-    src: "/after3.jpg",
+    src: "/after6.avif",
     alt: "Granite headstone polished and restored",
     caption: "After",
     location: "",
