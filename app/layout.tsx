@@ -4,7 +4,6 @@ import { Metadata } from "next";
 import { Inter } from 'next/font/google';
 import { Playfair_Display } from 'next/font/google';
 import Script from "next/script";
-import MetaPixel from "./components/MetaPixel";
 import MetaPixelEvents from "./components/MetaPixelEvents";
 
 const inter = Inter({
@@ -39,28 +38,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Google Tag Manager */}
         <Script
-          id="gtm-base"
-          strategy="afterInteractive" // or "lazyOnload" if you want max perf
+          id="gtm-script"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              (function(w,d,s,l,i){
-                w[l]=w[l]||[];
-                w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
-                var f=d.getElementsByTagName(s)[0],
-                    j=d.createElement(s),
-                    dl=l!='dataLayer'?'&l='+l:'';
-                j.async=true;
-                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-                f.parentNode.insertBefore(j,f);
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
               })(window,document,'script','dataLayer','${GTM_ID}');
             `,
           }}
         />
 
-        {/* Meta Pixel base snippet */}
+        {/* Meta Pixel - Updated 2025 Implementation */}
         <Script
-          id="meta-pixel"
-          strategy="afterInteractive" // or "lazyOnload" for max perf
+          id="meta-pixel-base"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
@@ -71,24 +65,35 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               t.src=v;s=b.getElementsByTagName(e)[0];
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '${META_PIXEL_ID}');
+              
+              // Initialize with advanced matching enabled
+              fbq('init', '${META_PIXEL_ID}', {
+                automatic_matching: true,
+                external_id: undefined
+              });
+              
+              // Track PageView
               fbq('track', 'PageView');
+              
+              // Set up automatic events
+              fbq('set', 'autoConfig', true, '${META_PIXEL_ID}');
             `,
           }}
         />
       </head>
 
       <body className="font-sans bg-brand-background text-brand-foreground">
-        {/* GTM NoScript - must be immediately after opening body tag */}
+        {/* GTM NoScript - Single instance */}
         <noscript>
           <iframe 
-            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
             height="0" 
             width="0" 
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
 
+        {/* Meta Pixel NoScript */}
         <noscript>
           <img
             height="1"
@@ -98,26 +103,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             alt=""
           />
         </noscript>
-
-        {/* Google Tag Manager */}
-        <Script
-          id="gtm-base"
-          strategy="afterInteractive" // or "lazyOnload" if you want max perf
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(w,d,s,l,i){
-                w[l]=w[l]||[];
-                w[l].push({'gtm.start': new Date().getTime(), event:'gtm.js'});
-                var f=d.getElementsByTagName(s)[0],
-                    j=d.createElement(s),
-                    dl=l!='dataLayer'?'&l='+l:'';
-                j.async=true;
-                j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-                f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','${GTM_ID}');
-            `,
-          }}
-        />
         
         <ClientHeader />
         <MetaPixelEvents />
