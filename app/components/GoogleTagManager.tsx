@@ -42,10 +42,3 @@ declare global {
     dataLayer: Record<string, unknown>[];
   }
 }
-
-// Type declaration for window.dataLayer
-declare global {
-  interface Window {
-    dataLayer: Record<string, unknown>[];
-  }
-}

@@ -2,8 +2,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import MetaPixel from "./MetaPixel";
-import GoogleTagManager from "./GoogleTagManager";
 import { Suspense } from 'react';
 
 const Header = dynamic(() => import("./Header"), { ssr: false });
@@ -11,12 +9,8 @@ const Header = dynamic(() => import("./Header"), { ssr: false });
 export default function ClientHeader() {
   return (
     <>
-      {/* Load GTM first, outside of Suspense */}
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID!} />
-      
       <Suspense fallback={null}>
         <Header />
-        <MetaPixel pixelId={process.env.NEXT_PUBLIC_META_PIXEL_ID!} />
       </Suspense>
     </>
   );
