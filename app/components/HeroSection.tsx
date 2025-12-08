@@ -21,7 +21,7 @@ export default function HeroSection({
   altText
 }: HeroSectionProps) {
   return (
-    <section className="relative flex flex-col h-[800px] flex items-center justify-center overflow-hidden">
+    <section className="relative flex flex-col h-[720px] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -30,7 +30,7 @@ export default function HeroSection({
           quality={60}
           fill
           className="object-cover object-center w-full"
-          priority
+          priority={true}
         />
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-black/60"></div>
