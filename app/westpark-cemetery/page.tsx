@@ -10,6 +10,7 @@ import {
 } from './components'
 import ContactForm from '../components/ContactForm'
 import FloatingWhatsAppButton from '../components/WhatsAppFloatingButton'
+import PricingPlans from '../components/PricingPlans'
 
 export default function WesparkCemeteryPage() {
   return (
@@ -93,6 +94,9 @@ export default function WesparkCemeteryPage() {
           ]}
         />
 
+        {/* Pricing Plans */ }
+        <PricingPlans />
+        
         {/* FAQ Section - Long-tail keyword targeting */}
         <FAQSection 
           title="Frequently Asked Questions"

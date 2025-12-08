@@ -1,25 +1,24 @@
 "use client";
 
 import React, { useState } from "react";
-import { handleScrollToForm } from "../utils/handleScrollToForm";
-import FadeInOutSection from "./FadeInOutSection";
+import { handleScrollToSection } from "../utils/handleScrollToSection";
 
 type MonthlyPlan = {
   name: string;
-  price: number;
+  price: string;
   features: string[];
 };
 
 type OnceOffPlan = {
   name: string;
-  price: number;
+  price: string;
   features: string[];
 };
 
 const monthlyPlans: MonthlyPlan[] = [
   {
     name: "Basic Care",
-    price: 179,
+    price: "R179",
     features: [
       "Monthly cleaning",
       "Lawn edging and light trimming",
@@ -30,27 +29,25 @@ const monthlyPlans: MonthlyPlan[] = [
   },
   {
     name: "Premium Care",
-    price: 299,
+    price: "R299",
     features: [
       "Monthly cleaning",
-      "Seasonal fresh flower replacement valued at R150",
+      "Seasonal fresh flower replacement",
       "Deep tombstone cleaning",
       "Weed clearing and grass trimming",
       "Before & after photo updates",
-      "Free anniversary tribute",
     ],
   },
   {
     name: "Family Care",
-    price: 499,
+    price: "R499",
     features: [
       "Monthly cleaning for two graves at the same cemetery",
-      "+R149/month for each additional grave",
+      "+R99/month for each additional grave",
       "Seasonal fresh flower replacement for each grave",
       "Deep tombstone cleaning",
       "Weed clearing and grass trimming",
       "Before & after photo updates",
-      "Free anniversary tribute",
     ],
   },
 ];
@@ -58,7 +55,7 @@ const monthlyPlans: MonthlyPlan[] = [
 const onceOffPlans: OnceOffPlan[] = [
   {
     name: "Basic Care",
-    price: 249,
+    price: "R249",
     features: [
       "One-time professional cleaning",
       "Lawn edging and light trimming",
@@ -69,10 +66,10 @@ const onceOffPlans: OnceOffPlan[] = [
   },
   {
     name: "Premium Care",
-    price: 399,
+    price: "R399",
     features: [
       "One-time professional cleaning",
-      "Seasonal fresh flower placement valued at R150",
+      "Seasonal fresh flower placement",
       "Deep tombstone cleaning",
       "Weed clearing and grass trimming",
       "Before & after photo updates",
@@ -80,12 +77,11 @@ const onceOffPlans: OnceOffPlan[] = [
   },
   {
     name: "Full Restoration",
-    price: 1249,
+    price: "Request a Quote",
     features: [
-      "One-time professional cleaning",
-      "Premium flower arrangements with vases replaced if damaged valued at R500",
-      "Expert tombstone restoration",
-      "Headstone lettering touch-up as needed",
+      "Leveling and resetting of sunken graves",
+      "Tombsrone and memorial repairs",
+      "Headstone relettering",
       "Gravel top-up or reset",
       "Before & after photo set",
     ],
@@ -101,16 +97,16 @@ const PricingPlans: React.FC = () => {
   const [isSubscription, setIsSubscription] = useState(true);
 
   return (
-    <FadeInOutSection>
       <section id="pricing" className="bg-white py-20 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light text-slate-800 mb-6 leading-tight">
-            Choose Your Care Plan
-          </h2>
-          <div className="w-16 h-px bg-slate-300 mx-auto mb-8"></div>
-          <p className="text-lg text-gray-600 mb-8">
-            Simple pricing with flexible once-off or recurring options.
-          </p>
+        <div className="max-w-6xl mx-auto text-center space-y-8">
+
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Choose Your Care Plan
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mb-6 lg:mb-8 rounded-full"></div>
+            <p className="text-xl text-gray-600 leading-relaxed">
+               Simple pricing with flexible once-off or recurring options.
+            </p>
 
           {/* Toggle Switch */}
           <div className="flex justify-center mb-12">
@@ -119,7 +115,7 @@ const PricingPlans: React.FC = () => {
                 type="button"
                 onClick={() => setIsSubscription(true)}
                 className={`px-4 py-2 cursor-pointer rounded-full text-sm font-medium transition ${
-                  isSubscription ? "bg-brand-primary text-white" : "text-gray-600"
+                  isSubscription ? "bg-gradient-to-r from-primary to-secondary text-white" : "text-gray-600"
                 }`}
               >
                 Subscription
@@ -128,7 +124,7 @@ const PricingPlans: React.FC = () => {
                 type="button"
                 onClick={() => setIsSubscription(false)}
                 className={`px-4 py-2 cursor-pointer rounded-full text-sm font-medium transition ${
-                  !isSubscription ? "bg-[color:var(--primary)] text-white" : "text-gray-600"
+                  !isSubscription ? "bg-gradient-to-r from-primary to-secondary text-white" : "text-gray-600"
                 }`}
               >
                 Once-off
@@ -151,9 +147,9 @@ const PricingPlans: React.FC = () => {
                     isSubscription ? "text-[color:var(--primary)]" : "text-[color:var(--primary)]"
                   }`}
                 >
-                  R{plan.price}
+                  {plan.price}
                   <span className="text-sm font-medium text-gray-500">
-                    {isSubscription ? "/mo" : " once-off"}
+                    {isSubscription ? "/mo" : ""}
                   </span>
                 </p>
 
@@ -178,17 +174,17 @@ const PricingPlans: React.FC = () => {
 
                 <button
                   type="button"
-                  onClick={handleScrollToForm}
-                  className="mt-auto w-full cursor-pointer text-white py-2 px-4 rounded-full font-medium transition bg-[color:var(--primary)] hover:bg-[color:var(--secondary)]"
+                  onClick={(e)=>handleScrollToSection("contact-form")}
+                  className="mt-auto w-full cursor-pointer text-white py-2 px-4 rounded-lg font-medium transition bg-gradient-to-r from-primary to-secondary hover:scale-105 transition"
                 >
                   {isSubscription ? "Subscribe Now" : "Book Now"}
                 </button>
+    
               </div>
             ))}
           </div>
         </div>
       </section>
-    </FadeInOutSection>
   );
 };
 

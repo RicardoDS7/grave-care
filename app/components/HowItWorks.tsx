@@ -7,7 +7,7 @@ import {
   HeartHandshake,
   Camera,
 } from "lucide-react";
-import { handleScrollToForm } from "../utils/handleScrollToForm";
+import { handleScrollToForm } from "../utils/handleScrollToSection";
 
 type Step = {
   icon: React.ReactElement;

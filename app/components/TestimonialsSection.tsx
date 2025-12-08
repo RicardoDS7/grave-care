@@ -2,6 +2,7 @@
 
 import React, { useCallback, useMemo, useState } from "react";
 import Image from "next/image";
+import { handleScrollToSection } from "../utils/handleScrollToSection";
 
 interface Testimonial {
   name: string;
@@ -366,15 +367,15 @@ export default function TestimonialsSection({
               Experience the same peace of mind and professional care that our families rave about.
               Get your personalised plan today.
             </p>
-            <a
-              href="#contact-form"
-              className="inline-flex items-center px-8 py-4 bg-white text-secondary hover:bg-gray-50 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            <button
+              onClick={(e)=>handleScrollToSection("contact-form")}
+              className="cursor-pointer inline-flex items-center px-8 py-4 bg-white text-secondary hover:bg-gray-50 font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
             >
               Get Started
               <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </div>

@@ -61,6 +61,7 @@ const FloatingWhatsAppButton = dynamic(() => import("./components/WhatsAppFloati
 
 // Static import for ServiceAreas since it doesn't have form elements
 import ServiceAreas from "./components/ServiceAreas";
+import PricingPlans from "./components/PricingPlans";
 
 export default function Home() {
   useEffect(() => {
@@ -128,6 +129,8 @@ export default function Home() {
 
       {/* Service Areas */}
       <ServiceAreas />
+
+      <PricingPlans />
       
       {/* FAQ Section - Long-tail keyword targeting */}
       <FAQSection 
