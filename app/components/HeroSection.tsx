@@ -30,6 +30,9 @@ export default function HeroSection({
           quality={60}
           fill
           className="object-cover object-center w-full"
+          sizes="(max-width: 768px) 100vw,
+         (max-width: 1200px) 50vw,
+         1200px"
           priority={true}
         />
         {/* Overlay for better text readability */}
