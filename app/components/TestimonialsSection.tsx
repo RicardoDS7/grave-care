@@ -46,13 +46,13 @@ const GRAVE_IMAGES: GraveImage[] = [
     src: "/before4.avif",
     alt: "Westpark Cemetery grave overgrown with weeds",
     caption: "Before",
-    location: "Westpark Cemetery",
+    location: "",
   },
   {
     src: "/after4.avif",
     alt: "Westpark Cemetery",
     caption: "After",
-    location: "Westpark Cemetery",
+    location: "",
   },
   {
     src: "/before5.avif",

@@ -26,18 +26,18 @@ export default function WesparkCemeteryPage() {
 
         {/* Hero Section - Above the fold content */}
         <HeroSection 
-          title="Professional Grave Care Services at Westpark Cemetery"
-          subtitle="Compassionate upkeep and maintenance — so your loved one’s resting place is always treated with dignity and care."
-          primaryCTA="Request a Visit"
-          secondaryCTA="View Services"
+          title="Westpark Cemetery Grave Care | Professional Maintenance & Restoration"
+          subtitle="Trusted Westpark Cemetery specialists providing compassionate grave care with before/after photo updates. Serving all cemetery sections with dignity and respect."
+          primaryCTA="Book Westpark Cemetery Visit"
+          secondaryCTA="View Westpark Services"
           backgroundImage="/hero-background-cover.avif"
-          altText="Professional grave care services at Wespark Cemetery Johannesburg"
+          altText="Professional Westpark Cemetery grave care and maintenance services in Johannesburg"
         />
 
         {/* Services Overview - Core offering highlight */}
         <ServicesOverview 
-          title="Our Westpark Cemetery Services"
-          subtitle="Comprehensive grave care offering peace of mind, and lasting dignity."
+          title="Specialised Westpark Cemetery Maintenance Services"
+          subtitle="Expert grave care for Westpark Cemetery's historic grounds and diverse denominational sections"
           services={[
             {
               title: "Headstone Cleaning & Restoration",
@@ -64,7 +64,7 @@ export default function WesparkCemeteryPage() {
 
         {/* About Wespark Cemetery Section - Local keyword targeting */}
         <AboutWesparkCemetery 
-          title="About Westpark Cemetery"
+          title="Westpark Cemetery: Historic Johannesburg Memorial Ground"
           content="Established in 1942, Westpark Cemetery is one of Johannesburg's most significant burial grounds, serving as the final resting place for many of South Africa's notable citizens. Located in Montgomery Park, this historic cemetery spans multiple denominational sections including Christian, Jewish, Muslim, and Chinese burial areas, reflecting Johannesburg's diverse heritage."
           highlights={[
             "Historic cemetery established in 1942",

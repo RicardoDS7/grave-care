@@ -138,6 +138,7 @@ const NotableResidentsCarousel = () => {
                 <Image
                   src={resident.imageUrl}
                   alt={resident.name}
+                  fill
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     // Fallback to initials if image fails to load
