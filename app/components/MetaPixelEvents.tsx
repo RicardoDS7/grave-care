@@ -20,9 +20,14 @@ export default function MetaPixelEvents() {
 
   }, [pathname]);
 
-  // Expose functions to window for global access (e.g., from inline onclicks)
+  // Expose functions to window for global access
   useEffect(() => {
     if (typeof window !== "undefined") {
+      
+      // Initialize page load time if not already set
+      if (!window.pageLoadTime) {
+        window.pageLoadTime = Date.now();
+      }
 
       window.trackGraveCareEmail = (emailType: string) => {
         pixel.trackEmailContact(emailType);
@@ -34,7 +39,7 @@ export default function MetaPixelEvents() {
         if (action === 'quote') pixel.trackQuoteRequest(service);
       };
 
-      // Scroll Tracking (Optimized)
+      // --- SCROLL TRACKING ---
       let scrolled = false;
       const onScroll = () => {
         if (!scrolled && window.scrollY > 500) {
@@ -45,8 +50,30 @@ export default function MetaPixelEvents() {
       };
       window.addEventListener("scroll", onScroll, { passive: true });
       
+      // --- MODERN 'TIME ON PAGE' TRACKING (Fixes Deprecation Warning) ---
+      // We use 'visibilitychange' instead of 'beforeunload'/'unload'
+      const handleVisibilityChange = () => {
+        if (document.visibilityState === 'hidden') {
+          // The user is leaving the page or switching tabs
+          const timeOnPage = Date.now() - (window.pageLoadTime || Date.now());
+          
+          if (timeOnPage > 10000) { // Only track if they stayed > 10 seconds
+             // Use navigator.sendBeacon if possible as it's more reliable during page unload
+             // But for pixel simplicity, we call our safe wrapper
+             pixel.trackCustomEvent('EngagedUser', {
+                engagement_type: 'time_on_page',
+                time_spent: timeOnPage,
+                page: pathname
+             });
+          }
+        }
+      };
+
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+
       return () => {
         window.removeEventListener("scroll", onScroll);
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
       };
     }
   }, [pathname]);
