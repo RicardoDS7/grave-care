@@ -1,15 +1,16 @@
-"use client"
-import React from 'react'
-import Image from 'next/image'
-import { handleScrollToSection } from '../utils/handleScrollToSection'
+"use client";
+
+import React from 'react';
+import Image from 'next/image';
+import { handleScrollToSection } from '../utils/handleScrollToSection';
 
 interface HeroSectionProps {
-  title: string
-  subtitle: string
-  primaryCTA: string
-  secondaryCTA: string
-  backgroundImage: string
-  altText: string
+  title: string;
+  subtitle: string;
+  primaryCTA: string;
+  secondaryCTA: string;
+  backgroundImage: string;
+  altText: string;
 }
 
 export default function HeroSection({
@@ -21,33 +22,37 @@ export default function HeroSection({
   altText
 }: HeroSectionProps) {
   return (
-    <section className="relative flex flex-col h-[720px] flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+    <section className="relative flex flex-col h-[720px] items-center justify-center overflow-hidden">
+      
+      {/* Background Image Container */}
+      <div className="absolute inset-0 w-full h-full -z-10">
         <Image
           src={backgroundImage}
           alt={altText}
           quality={60}
           fill
-          className="object-cover object-center w-full"
-          sizes="(max-width: 768px) 100vw,
-         (max-width: 1200px) 50vw,
-         1200px"
-          priority={true}
+          priority={true} // CRITICAL for LCP score
+          className="object-cover object-center"
+          
+          // UPDATED: Since this is a full-width background, we tell the browser 
+          // it will always take up 100% of the viewport width.
+          sizes="100vw"
         />
-        {/* Overlay for better text readability */}
+        
+        {/* Dark Overlay for text readability */}
         <div className="absolute inset-0 bg-black/60"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
-          {/* Main Headline - H1 with primary keyword */}
+          
+          {/* Main Headline - H1 */}
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
             {title}
           </h1>
 
-          {/* Subtitle with supporting keywords */}
+          {/* Subtitle */}
           <p className="hidden md:block text-lg md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
             {subtitle}
           </p>
@@ -78,7 +83,7 @@ export default function HeroSection({
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {/* Primary CTA */}
             <button
-              onClick={()=>handleScrollToSection("contact-form")}
+              onClick={() => handleScrollToSection("contact-form")}
               className="cursor-pointer inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary to-secondary text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:bg-secondary transition-all duration-300 transform hover:scale-105 text-lg"
             >
               {primaryCTA}
@@ -89,7 +94,7 @@ export default function HeroSection({
 
             {/* Secondary CTA */}
             <button
-              onClick={()=>handleScrollToSection("services-overview")}
+              onClick={() => handleScrollToSection("services-overview")}
               className="cursor-pointer inline-flex items-center px-8 py-4 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-semibold rounded-lg border-2 border-white/30 hover:border-white/50 transition-all duration-300 text-lg"
             >
               {secondaryCTA}
@@ -98,7 +103,6 @@ export default function HeroSection({
 
         </div>
       </div>
-
     </section>
-  )
+  );
 }

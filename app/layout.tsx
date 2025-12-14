@@ -1,8 +1,7 @@
 import "./globals.css";
 import ClientHeader from "./components/ClientHeader";
 import { Metadata } from "next";
-import { Inter } from 'next/font/google';
-import { Playfair_Display } from 'next/font/google';
+import { Inter, Playfair_Display } from 'next/font/google';
 import Script from "next/script";
 import MetaPixelEvents from "./components/MetaPixelEvents";
 
@@ -19,7 +18,6 @@ const playfair = Playfair_Display({
   display: 'swap',
 });
 
-// layout.tsx
 export const metadata: Metadata = {
   title: "GraveCare | Grave Maintenance & Cleaning Services in Johannesburg",
   description:
@@ -35,11 +33,13 @@ const META_PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID!;
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <head>
-        {/* Google Tag Manager */}
+      <head />
+      <body className="font-sans bg-brand-background text-brand-foreground">
+        
+        {/* Google Tag Manager - CHANGED strategy to lazyOnload */}
         <Script
           id="gtm-script"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -51,10 +51,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
 
-        {/* Meta Pixel - Updated 2025 Implementation */}
+        {/* Meta Pixel - CHANGED strategy to lazyOnload */}
         <Script
           id="meta-pixel-base"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               !function(f,b,e,v,n,t,s)
@@ -66,24 +66,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
               
-              // Initialize with advanced matching enabled
               fbq('init', '${META_PIXEL_ID}', {
                 automatic_matching: true,
                 external_id: undefined
               });
               
-              // Track PageView
               fbq('track', 'PageView');
-              
-              // Set up automatic events
               fbq('set', 'autoConfig', true, '${META_PIXEL_ID}');
             `,
           }}
         />
-      </head>
 
-      <body className="font-sans bg-brand-background text-brand-foreground">
-        {/* GTM NoScript - Single instance */}
+        {/* GTM NoScript */}
         <noscript>
           <iframe 
             src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}

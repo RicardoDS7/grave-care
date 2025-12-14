@@ -1,15 +1,14 @@
-// app/components/ClientHeader.tsx
 "use client";
 
-import dynamic from "next/dynamic";
 import { Suspense } from 'react';
-
-const Header = dynamic(() => import("./Header"), { ssr: false });
+// CHANGED: Switched from dynamic import to static import for immediate FCP
+import Header from "./Header";
 
 export default function ClientHeader() {
   return (
     <>
-      <Suspense fallback={null}>
+      <Suspense fallback={<div className="h-20 w-full" />}> 
+        {/* Added a simple placeholder height to prevent layout shift if suspense hits */}
         <Header />
       </Suspense>
     </>
