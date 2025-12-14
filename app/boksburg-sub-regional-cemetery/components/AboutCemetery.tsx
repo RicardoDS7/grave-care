@@ -42,12 +42,12 @@ export default function AboutCemetery({ title, content, highlights }: AboutCemet
             <div className="bg-gray-50 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Cemetery Details</h3>
               <div className="space-y-3 text-gray-600">
-                <div className="flex items-start gap-3">
+                {/* <div className="flex items-start gap-3">
                   <Phone className="w-5 h-5 text-secondary mt-1 flex-shrink-0" />
                   <a href="tel:+27688625442" className="hover:underline">
                     +27 68 862 5442
                   </a>
-                </div>
+                </div> */}
 
                 <div className="flex items-start gap-3">
                   <svg
