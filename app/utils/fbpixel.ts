@@ -118,21 +118,6 @@ export const trackQuoteRequest = (serviceType: string, location: string = 'Johan
 
 // --- Contact Functions (PII Removed) ---
 
-export const trackPhoneCall = (phoneNumber: string): void => {
-  // ⚠️ CRITICAL FIX: NEVER send the actual phoneNumber in the parameters.
-  
-  trackContact({
-    content_name: 'Phone Call',
-    method: 'phone'
-  });
-
-  trackCustomEvent('PhoneCallInitiated', {
-    method: 'click_to_call',
-    // We send a hashed identifier or just 'true' to say a number was clicked
-    clicked_number: true 
-  });
-};
-
 export const trackEmailContact = (emailType: string): void => {
   trackContact({
     content_name: 'Email Contact',

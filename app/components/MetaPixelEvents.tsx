@@ -23,10 +23,6 @@ export default function MetaPixelEvents() {
   // Expose functions to window for global access (e.g., from inline onclicks)
   useEffect(() => {
     if (typeof window !== "undefined") {
-      
-      window.trackGraveCareCall = (phoneNumber: string) => {
-        pixel.trackPhoneCall(phoneNumber);
-      };
 
       window.trackGraveCareEmail = (emailType: string) => {
         pixel.trackEmailContact(emailType);
