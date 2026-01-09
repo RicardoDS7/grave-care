@@ -14,7 +14,7 @@ import {
 const TestimonialsSection = dynamic(() => import("./components/TestimonialsSection"), {
   ssr: false,
   loading: () => (
-    <div className="py-16 bg-gray-50 animate-pulse">
+    <div className="py-16 bg-gray-100 animate-pulse">
       <div className="max-w-7xl mx-auto px-6">
         <div className="h-8 bg-gray-200 rounded w-1/3 mx-auto mb-8"></div>
         <div className="h-32 bg-gray-200 rounded"></div>
